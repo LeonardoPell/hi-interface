@@ -1,0 +1,28 @@
+<app-header-inicial></app-header-inicial>
+<section class="containerLogin">
+    <mat-card>
+        <form [formGroup]="formLogin" novalidate>
+            <div class="logos">
+                <img src="../../../assets/images/logo-gob-federal.png" alt="gob-federal">
+                <img src="../../../assets/images/logo-loja.png" alt="logo-loja">
+                <img src="../../../assets/images/logo-gob-mg.png" alt="gob-mg">
+            </div>
+            <br>
+            <mat-form-field class="formFild">
+                <input (input)="somenteNumeros($event)" matInput placeholder="Digite o seu CPF" type="text"  formControlName="cpf"  name="cpf">
+                <mat-error *ngIf="formLogin.controls['cpf'].hasError('required')">CPF é um campo obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="formFild">
+                <input matInput placeholder="Digite a sua senha" [type]="esconderSenha ? 'password' : 'text'"  formControlName="senha"  name="senha">
+                <button mat-icon-button matSuffix (click)="toggleVisibilidadeSenha()">
+                    <mat-icon>{{ esconderSenha ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="formLogin.controls['senha'].hasError('required')">Senha é um campo obrigatorio</mat-error>
+            </mat-form-field>
+            <div class="acao">
+                <button mat-raised-button type="submit" (click)="salvar()" color="primary" class="botaoAcao">Entrar</button>
+            </div>
+        </form>
+    </mat-card>
+</section>
+<app-footer-inicial></app-footer-inicial>

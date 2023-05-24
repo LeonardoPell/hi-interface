@@ -7,11 +7,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './core/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
+import { InicialComponent } from './pages/inicial/inicial.component';
+import { HeaderInicialComponent } from './components/header-inicial/header-inicial.component';
+import { FooterInicialComponent } from './components/footer-inicial/footer-inicial.component';
+import { LoginComponent } from './pages/login/login.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    InicialComponent,
+    HeaderInicialComponent,
+    FooterInicialComponent,
+    LoginComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +33,13 @@ import { HomeComponent } from './pages/home/home.component';
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
