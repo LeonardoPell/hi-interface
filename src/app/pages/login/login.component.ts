@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +18,15 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
   }
 
   salvar(){
-    alert('Em construção!');
+    localStorage.setItem('token-user-hiram1414','teste');
+    this.router.navigate(['']);
   }
 
   somenteNumeros(event: any) {

@@ -17,6 +17,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SidenavBarComponent } from './components/sidenav-bar/sidenav-bar.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
+import { HomeLogadoComponent } from './pages/home-logado/home-logado.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { NoticiasComponent } from './pages/noticias/noticias.component';
     LoadingComponent,
     SidenavComponent,
     SidenavBarComponent,
-    NoticiasComponent
+    NoticiasComponent,
+    HomeLogadoComponent
   ],
   imports: [
     BrowserModule,

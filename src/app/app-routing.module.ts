@@ -5,10 +5,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { InicialComponent } from './pages/inicial/inicial.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
+import { HomeLogadoComponent } from './pages/home-logado/home-logado.component';
 
 const routes: Routes = [
   {
     path: '',
+    component: HomeLogadoComponent,
     children: [
       {
         path: '',
@@ -17,7 +19,14 @@ const routes: Routes = [
       },
       {
         path: 'noticias', component: NoticiasComponent
-      }
+      },
+      {
+        path: 'usuarios',
+        loadChildren: () =>
+          import('./pages/usuarios/usuarios.module').then(
+            (m) => m.UsuariosModule
+          ),
+      },
     ],
     canActivate: [AuthGuard]
   },
@@ -37,6 +46,10 @@ const routes: Routes = [
         path: 'login', component: LoginComponent
       }
     ]
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

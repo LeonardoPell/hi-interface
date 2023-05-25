@@ -41,6 +41,10 @@ a{
 
   .container{
     padding: 2% 20%;
+  }  
+  .my-panel-class .mat-dialog-container {
+    padding: 0px;
+    /* Add more styles */
   }
 
   textarea{
