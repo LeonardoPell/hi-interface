@@ -14,6 +14,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { SidenavBarComponent } from './components/sidenav-bar/sidenav-bar.component';
+import { NoticiasComponent } from './pages/noticias/noticias.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
     HeaderInicialComponent,
     FooterInicialComponent,
     LoginComponent,
-    LoadingComponent
+    LoadingComponent,
+    SidenavComponent,
+    SidenavBarComponent,
+    NoticiasComponent
   ],
   imports: [
     BrowserModule,

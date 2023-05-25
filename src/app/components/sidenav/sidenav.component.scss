@@ -1,0 +1,43 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  .nomeUsuario {
+    padding-right: 5px;
+  }
+  
+  .sidebar-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .sidebar-is-mobile .sidebar-toolbar {
+    position: fixed;
+    z-index: 2;
+  }
+  
+  .loader-container {
+    height: 3px;
+  }
+  
+  h1.sidebar-app-name {
+    margin-left: 8px;
+    width: 185px;
+  }
+  
+  .sidebar-sidenav-container {
+    flex: 1;
+  }
+  
+  .sidebar-is-mobile .sidebar-sidenav-container {
+    flex: 1 0 auto;
+  }
+  
+  .mat-drawer {
+    width: 250px;
+  }
+  

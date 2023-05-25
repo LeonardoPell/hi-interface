@@ -1,0 +1,24 @@
+<div class="sidebar-container">
+  <mat-toolbar color="primary" class="sidebar-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <img src="../../../assets/images/logo-loja.png" alt="logo-loja" width="60px" height="60px">
+    <span class="spacer"></span>
+   
+    <button mat-button [matMenuTriggerFor]="menu"><span class="nomeUsuario">Leonardo</span><mat-icon >person</mat-icon></button>
+      <mat-menu #menu="matMenu">
+      <button mat-menu-item >Minha conta</button>
+      <button mat-menu-item (click)="deslogar()">Deslogar</button>
+    </mat-menu>
+    
+  </mat-toolbar>
+  <mat-sidenav-container class="sidebar-sidenav-container">
+    <mat-sidenav #snav mode="side" fixedTopGap="56" opened="false">
+      <app-sidenav-bar></app-sidenav-bar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
