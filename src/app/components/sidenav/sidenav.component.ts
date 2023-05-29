@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DadosUsuario } from 'src/app/core/interface/usuario/dadosUsuario.model';
+import { DadosUsuarioService } from 'src/app/core/services/dados-usuario.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,9 +10,12 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  dadosUsuario!: DadosUsuario;
+
+  constructor(private router: Router, private _dadosUsuarioService: DadosUsuarioService) { }
 
   ngOnInit(): void {
+    this.dadosUsuario = this._dadosUsuarioService.pegaDadosUsuario();
   }
 
   deslogar() {

@@ -6,7 +6,7 @@
     <h3>Hiram1414</h3>
     <span class="spacer"></span>
    
-    <button mat-button [matMenuTriggerFor]="menu"><span class="nomeUsuario">Leonardo</span><mat-icon >person</mat-icon></button>
+    <button mat-button [matMenuTriggerFor]="menu"><span class="nomeUsuario">{{dadosUsuario.nome}}</span><mat-icon >person</mat-icon></button>
       <mat-menu #menu="matMenu">
       <button mat-menu-item >Minha conta</button>
       <button mat-menu-item (click)="deslogar()">Deslogar</button>
