@@ -34,3 +34,16 @@ header{
 a{
     color: black;
 }
+
+@media (max-width: 900px) {
+    .imgLogo {
+      font-size: 10px;
+      img{
+        width: 60px;
+      }
+    }
+
+    #entrar{
+        font-size: 18px;
+    }
+  }
