@@ -1,32 +1,50 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/api/auth/auth.service';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+
+  sub: Subscription[] = [];
 
   formLogin: FormGroup = this.fb.group({
-    cpf: ['', Validators.required,Validators.pattern('^[0-9]*$')],
+    cim: ['', [Validators.required,Validators.pattern('^[0-9]*$')]],
     senha: ['', Validators.required],
+    palavraSemestral: ['', Validators.required]
   });
 
   esconderSenha = true;
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private _authService: AuthService,
+    private _snackBarService: SnackBarService
   ) { }
 
   ngOnInit(): void {
   }
 
   salvar(){
-    localStorage.setItem('token-user-hiram1414','teste');
-    this.router.navigate(['']);
+    if(!this.formLogin.valid){
+      return;
+    }
+
+    this._authService.login({
+      cim: this.formLogin.controls['cim'].value,
+      senha: `${this.formLogin.controls['senha'].value}|palavra_chave|${this.formLogin.controls['palavraSemestral'].value}`
+    }).subscribe((tokenLogin) => {
+      localStorage.setItem('token-user-hiram1414',String(tokenLogin.token));
+      this._snackBarService.showMessage('Logado com sucesso!');
+      this.router.navigate(['']);
+    });
   }
 
   somenteNumeros(event: any) {
@@ -40,6 +58,10 @@ export class LoginComponent implements OnInit {
 
   toggleVisibilidadeSenha() {
     this.esconderSenha = !this.esconderSenha;
+  }
+
+  ngOnDestroy() {
+    this.sub.forEach((s) => s.unsubscribe());
   }
 
 }

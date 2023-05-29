@@ -9,8 +9,8 @@
             </div>
             <br>
             <mat-form-field class="formFild">
-                <input (input)="somenteNumeros($event)" matInput placeholder="Digite o seu CPF" type="text"  formControlName="cpf"  name="cpf">
-                <mat-error *ngIf="formLogin.controls['cpf'].hasError('required')">CPF é um campo obrigatorio</mat-error>
+                <input (input)="somenteNumeros($event)" matInput placeholder="Digite o seu CIM" type="text"  formControlName="cim"  name="cim">
+                <mat-error *ngIf="formLogin.controls['cim'].hasError('required')">CIM é um campo obrigatorio</mat-error>
             </mat-form-field>
             <mat-form-field class="formFild">
                 <input matInput placeholder="Digite a sua senha" [type]="esconderSenha ? 'password' : 'text'"  formControlName="senha"  name="senha">
@@ -18,6 +18,10 @@
                     <mat-icon>{{ esconderSenha ? 'visibility_off' : 'visibility' }}</mat-icon>
                 </button>
                 <mat-error *ngIf="formLogin.controls['senha'].hasError('required')">Senha é um campo obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="formFild">
+                <input matInput placeholder="Digite a sua palavra semestral" type="text"  formControlName="palavraSemestral"  name="palavraSemestral">
+                <mat-error *ngIf="formLogin.controls['palavraSemestral'].hasError('required')">Palavra Semestral é um campo obrigatorio</mat-error>
             </mat-form-field>
             <div class="acao">
                 <button mat-raised-button type="submit" (click)="salvar()" color="primary" class="botaoAcao">Entrar</button>

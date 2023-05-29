@@ -12,7 +12,7 @@ import { HeaderInicialComponent } from './components/header-inicial/header-inici
 import { FooterInicialComponent } from './components/footer-inicial/footer-inicial.component';
 import { LoginComponent } from './pages/login/login.component';
 import { LoadingComponent } from './components/loading/loading.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptors';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SidenavBarComponent } from './components/sidenav-bar/sidenav-bar.component';
@@ -34,6 +34,7 @@ import { HomeLogadoComponent } from './pages/home-logado/home-logado.component';
     HomeLogadoComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
