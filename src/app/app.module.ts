@@ -18,6 +18,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { SidenavBarComponent } from './components/sidenav-bar/sidenav-bar.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 import { HomeLogadoComponent } from './pages/home-logado/home-logado.component';
+import { AuthInterceptor } from './api/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,11 @@ import { HomeLogadoComponent } from './pages/home-logado/home-logado.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true,
     },
   ],
