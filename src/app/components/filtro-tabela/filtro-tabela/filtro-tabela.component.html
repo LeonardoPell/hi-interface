@@ -1,0 +1,26 @@
+<div class="header">
+    <div class="title">
+        <h1>{{descricaoTitulo}}</h1>
+    </div>
+    
+        <div class="filter">
+            <button mat-fab color="primary" (click)="atualizar()" #tooltip="matTooltip"
+            matTooltip="Atualizar tabela"  class="refresh">
+                <mat-icon>refresh</mat-icon>
+            </button>
+           <span *ngIf="rota !== ''">
+            <button mat-fab color="primary" #tooltip="matTooltip"
+            matTooltip="{{descricaoBotaoNovo}}" (click)="novo()">
+                <mat-icon>add</mat-icon>
+            </button>
+           </span>
+            <mat-form-field appearance="standard" class="actions">
+                <mat-label>Filtro</mat-label>
+                <span matPrefix><mat-icon>search</mat-icon></span>
+                <input matInput (keyup)="applyFilter($event)"  placeholder="Digite o que deseja encontrar..." autocomplete="off" #input>
+            <button *ngIf="input.value" matSuffix mat-icon-button (click)="input.value = ''">
+                <mat-icon>close</mat-icon>
+            </button>
+              </mat-form-field>
+        </div>
+</div>

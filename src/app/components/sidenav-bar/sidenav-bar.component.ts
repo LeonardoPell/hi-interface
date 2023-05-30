@@ -15,7 +15,6 @@ export class SidenavBarComponent implements OnInit {
 
   ngOnInit(): void {
     dadosMenu.map((menu) => {
-      debugger;
       this.menuList.push(menu);
     });
   }

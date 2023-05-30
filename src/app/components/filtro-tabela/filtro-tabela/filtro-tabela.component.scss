@@ -1,12 +1,4 @@
-table {
-    width: 100%;
-    cursor: pointer;
-  }
-  .container {
-    padding: 24px;
-  }
-  
-  .actions {
+.actions {
     width: 30%;
     margin: 8px;
   }
@@ -27,13 +19,5 @@ table {
   
   .refresh {
     margin-left: 7px;
-  }
-  .menuAcoes {
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: end;
-    text-align: end;
   }
   

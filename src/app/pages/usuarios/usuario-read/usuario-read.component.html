@@ -1,1 +1,45 @@
-<p>usuario-read works!</p>
+<div class="container">
+
+    <app-filtro-tabela [rota]="'/usuarios/create'" [descricaoBotaoNovo]="'Cadastrar Obreiro'" [descricaoTitulo]="'Usuários'" [recebeLista]="listaUsuario" (valorFiltro)="recebeValorFiltro($event)"></app-filtro-tabela>
+  
+    <table mat-table [dataSource]="listaUsuario" matSort class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome Obreiro</th>
+        <td mat-cell *matCellDef="let element" (click)="selectUsuario(element.id)"> {{element.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email Obreiro</th>
+        <td mat-cell *matCellDef="let element" (click)="selectUsuario(element.id)"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="codigo_obreiro">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Codigo do Obreiro</th>
+        <td mat-cell *matCellDef="let element" (click)="selectUsuario(element.id)"> {{element.codigo_obreiro}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefone do Obreiro</th>
+        <td mat-cell *matCellDef="let element" (click)="selectUsuario(element.id)"> {{element.telefone}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="iniciacao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Obreiro desde:</th>
+        <td mat-cell *matCellDef="let element" (click)="selectUsuario(element.id)"> {{formataDataHora(element.iniciacao)}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Não existe esta informação deste usuarios para filtrar "{{filtroNaoEncontrado}}"</td>
+      </tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" [pageSize]="10"
+      showFirstLastButtons></mat-paginator>
+  
+  </div>
+  

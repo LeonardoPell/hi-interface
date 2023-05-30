@@ -10,7 +10,6 @@ export class DadosUsuarioService {
     constructor() {}
 
     pegaDadosUsuario(): DadosUsuario{
-      debugger;
         const usuarioToken: any = localStorage.getItem('token-user-hiram1414');
         return jwt_decode(usuarioToken);
     }

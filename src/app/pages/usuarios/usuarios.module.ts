@@ -5,6 +5,8 @@ import { UsuariosRoutingModule } from './usuarios-routing.module';
 import { UsuarioViewComponent } from './usuario-view/usuario-view.component';
 import { UsuarioReadComponent } from './usuario-read/usuario-read.component';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
+import { MaterialModule } from 'src/app/core/material/material.module';
+import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabela.module';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
   ],
   imports: [
     CommonModule,
-    UsuariosRoutingModule
+    UsuariosRoutingModule,
+    MaterialModule,
+    FiltroTabelaModule
   ]
 })
 export class UsuariosModule { }
