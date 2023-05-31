@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+
 .actions {
     width: 30%;
     margin: 8px;
@@ -8,9 +10,13 @@
   }
   
   .filter {
+    justify-content: flex-end;
     display: flex;
-    flex-direction: row-reverse;
     padding: 0px 5px 0px 0px;
+  }
+
+  .botaoAdd{
+    margin-left: 8px;
   }
   
   table tr:hover td {
@@ -20,4 +26,16 @@
   .refresh {
     margin-left: 7px;
   }
-  
+
+  .title{
+    font-family: Titillium Web;
+    font-size: 36px;
+    font-weight: 700;
+    padding: 24px 0px 0px 24px;
+  }
+
+  @media (max-width: 1200px) {
+    .actions {
+      width: 100%;
+    }
+  }  
