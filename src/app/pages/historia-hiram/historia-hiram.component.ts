@@ -10,6 +10,11 @@ export class HistoriaHiramComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.scrollToTop();
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 }
