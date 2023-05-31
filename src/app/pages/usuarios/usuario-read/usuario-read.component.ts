@@ -41,7 +41,6 @@ export class UsuarioReadComponent implements OnInit {
   ngOnInit(): void {
     this.sub.push(
       this._usuarioService.retornaListaUsuarios().subscribe(usuarios => {
-        console.log(usuarios)
         this.atualizaValoresMatTable(usuarios);
       })
     );

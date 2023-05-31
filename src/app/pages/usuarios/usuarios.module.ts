@@ -7,6 +7,8 @@ import { UsuarioReadComponent } from './usuario-read/usuario-read.component';
 import { UsuarioFormComponent } from './usuario-form/usuario-form.component';
 import { MaterialModule } from 'src/app/core/material/material.module';
 import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabela.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TextMaskModule } from '@myndmanagement/text-mask';
 
 
 @NgModule({
@@ -19,7 +21,10 @@ import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabe
     CommonModule,
     UsuariosRoutingModule,
     MaterialModule,
-    FiltroTabelaModule
+    FiltroTabelaModule,
+    ReactiveFormsModule,
+    FormsModule,
+    TextMaskModule
   ]
 })
 export class UsuariosModule { }

@@ -1,1 +1,97 @@
-<p>usuario-form works!</p>
+<div class="containerApp">
+    <div class="tittle">
+        <h1>{{titulo}}</h1>
+    </div>
+    <mat-tab-group animationDuration="500ms">
+        <mat-tab label="Informações basicas">
+            <div class="card-conatiner mat-elevation-z8">
+                <mat-card class="card">
+                   
+                    <form [formGroup]="formBasico" novalidate >
+                       <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o nome" [(ngModel)]="usuario.nome" formControlName="nome"  name="nome">
+                                <mat-error *ngIf="formBasico.controls['nome'].hasError('required')">Nome é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o e-mail" [(ngModel)]="usuario.email" formControlName="email" name="email">
+                                <mat-error *ngIf="formBasico.controls['email'].hasError('required')">E-mail é um campo obrigatorio</mat-error>
+                                <mat-error *ngIf="formBasico.controls['email'].hasError('email')">Digite um email valido</mat-error>
+                            </mat-form-field>
+                       </div>
+
+                       <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o telefone" [(ngModel)]="usuario.telefone" formControlName="telefone" [textMask]="{mask: mask}" type="text"  name="telefone">
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite a senha" type="text" formControlName="senha" name="senha">
+                                <mat-error *ngIf="formBasico.controls['senha'].hasError('minlength')">Senha deve ter no minimo 6 caracteres</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="grid">
+                            <mat-form-field class="formFild">
+                                <mat-label>Data Iniciação</mat-label>
+                                <input matInput [matDatepicker]="pickeriniciacao" formControlName="iniciacao" name="iniciacao" class="formFild">
+                                <mat-hint>DD/MM/YYYY</mat-hint >
+                                <mat-error *ngIf="formBasico.controls['iniciacao'].hasError('required')">Iniciação é um campo obrigatorio</mat-error>
+                                <mat-datepicker-toggle matSuffix [for]="pickeriniciacao"></mat-datepicker-toggle>
+                                <mat-datepicker #pickeriniciacao></mat-datepicker>
+                             </mat-form-field>
+                             <mat-form-field class="formFild">
+                                <mat-label>Data Nascimento</mat-label>
+                                <input matInput [matDatepicker]="pickerNascimento" formControlName="nascimento" name="nascimento" class="formFild">
+                                <mat-hint>DD/MM/YYYY</mat-hint >
+                                <mat-error *ngIf="formBasico.controls['nascimento'].hasError('required')">Data de Nascimento é um campo obrigatorio</mat-error>
+                                <mat-datepicker-toggle matSuffix [for]="pickerNascimento"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerNascimento></mat-datepicker>
+                             </mat-form-field>
+                       </div>
+                       <br>
+                       <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o CIM" [(ngModel)]="usuario.cim" formControlName="cim"  name="cim">
+                                <mat-error *ngIf="formBasico.controls['cim'].hasError('required')">CIM é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o Código do Obreiro" [(ngModel)]="usuario.codigo_obreiro" formControlName="codigo_obreiro"  name="codigo_obreiro">
+                                <mat-error *ngIf="formBasico.controls['codigo_obreiro'].hasError('required')">Codigo do Obreiro é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                       </div>  
+                       <div class="grid">
+                        <mat-form-field class="formFild">
+                            <input matInput placeholder="Digite o CPF" [(ngModel)]="usuario.cpf" formControlName="cpf"  name="cpf">
+                            <mat-error *ngIf="formBasico.controls['cpf'].hasError('required')">CPF é um campo obrigatorio</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="formFild">
+                            <input matInput placeholder="Digite o RG" [(ngModel)]="usuario.rg" formControlName="rg"  name="rg">
+                            <mat-error *ngIf="formBasico.controls['rg'].hasError('required')">RG é um campo obrigatorio</mat-error>
+                        </mat-form-field>
+                        </div> 
+                       <br>
+                        <div *ngIf="tipoFormulario === 'edita'" class="formFild">
+                            <h4>Status: </h4>
+                             <mat-radio-group >
+                               <mat-radio-button value=1 [checked]="usuario.ativo === 1" (click)="ativo(1)" class="radioButton" color="primary">Ativo</mat-radio-button>
+                               <mat-radio-button value=0 [checked]="usuario.ativo === 0" (click)="ativo(0)"  color="primary">Inativo</mat-radio-button>
+                             </mat-radio-group>
+                         </div>
+                       
+                       <div class="actions">
+                        <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
+                            {{descricaoBotao}}
+                        </button>
+                        <button mat-raised-button class="cancela" (click)="cancela()">
+                            Voltar
+                        </button>
+                    </div>
+
+                    </form>
+                </mat-card>
+               
+            </div>
+               
+        </mat-tab>
+       
+    </mat-tab-group>
+</div>
