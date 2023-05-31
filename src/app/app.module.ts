@@ -19,6 +19,7 @@ import { SidenavBarComponent } from './components/sidenav-bar/sidenav-bar.compon
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 import { HomeLogadoComponent } from './pages/home-logado/home-logado.component';
 import { AuthInterceptor } from './api/auth/auth.interceptor';
+import { HistoriaHiramComponent } from './pages/historia-hiram/historia-hiram.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthInterceptor } from './api/auth/auth.interceptor';
     SidenavComponent,
     SidenavBarComponent,
     NoticiasComponent,
-    HomeLogadoComponent
+    HomeLogadoComponent,
+    HistoriaHiramComponent
   ],
   imports: [
     HttpClientModule,

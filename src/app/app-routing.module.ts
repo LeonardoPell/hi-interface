@@ -6,6 +6,7 @@ import { InicialComponent } from './pages/inicial/inicial.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 import { HomeLogadoComponent } from './pages/home-logado/home-logado.component';
+import { HistoriaHiramComponent } from './pages/historia-hiram/historia-hiram.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,9 @@ const routes: Routes = [
       },
       {
         path: 'inicial', component: InicialComponent
+      },
+      {
+        path: 'historia-hiram', component: HistoriaHiramComponent
       },
       {
         path: 'login', component: LoginComponent
