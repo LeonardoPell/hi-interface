@@ -13,6 +13,12 @@ export var dadosMenu = [
         icon: 'people',
         routerLink: '/usuarios',
       },
+      {
+        text: 'Palavra Semestral',
+        icon: 'book',
+        routerLink: '/palavra-semestral',
+      },
     ],
   },
+  
 ];

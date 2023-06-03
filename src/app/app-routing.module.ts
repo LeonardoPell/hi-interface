@@ -28,6 +28,13 @@ const routes: Routes = [
             (m) => m.UsuariosModule
           ),
       },
+      {
+        path: 'palavra-semestral',
+        loadChildren: () =>
+          import('./pages/palavra-semestral/palavra-semestral.module').then(
+            (m) => m.PalavraSemestralModule
+          ),
+      },
     ],
     canActivate: [AuthGuard]
   },
