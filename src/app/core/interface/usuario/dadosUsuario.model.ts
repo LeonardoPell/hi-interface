@@ -11,6 +11,7 @@ export interface DadosUsuario {
     iniciacao: string;
     criado_em: string;
     atualizado_em: string | null;
+    nivel_obreiro?: number;
   }
 
 export interface UsuarioCadastro{
@@ -25,6 +26,7 @@ export interface UsuarioCadastro{
     nascimento: string;
     iniciacao: string;
     ativo: number;
+    nivel_obreiro?: number;
 }
 
 export interface UsuarioEditado{
@@ -39,4 +41,5 @@ export interface UsuarioEditado{
   nascimento?: string;
   iniciacao?: string;
   ativo?: number;
+  nivel_obreiro?: number;
 }

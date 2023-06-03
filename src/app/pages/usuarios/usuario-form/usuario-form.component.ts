@@ -2,8 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { NivelObreiroService } from 'src/app/api/nivel-obreiro/nivel-obreiro.model';
 import { UsuarioService } from 'src/app/api/usuario/usuario.model';
-import { DadosUsuario, UsuarioCadastro, UsuarioEditado } from 'src/app/core/interface/usuario/dadosUsuario.model';
+import { UsuarioCadastro, UsuarioEditado } from 'src/app/core/interface/usuario/dadosUsuario.model';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 
 @Component({
@@ -26,10 +27,12 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
     rg: '',
     nascimento: '',
     iniciacao: '',
-    ativo: 1
+    ativo: 1,
+    nivel_obreiro: 0,
   };
   titulo = '';
   descricaoBotao = '';
+  nivelObreiroLista: any[] = [];
 
   mask = [
     '(',
@@ -59,18 +62,26 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
     cpf: ['', Validators.required],
     rg: ['', Validators.required],
     nascimento: ['', Validators.required],
+    nivel_obreiro: ['', Validators.required]
   });
-
+  
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
     private _usuarioService: UsuarioService,
-    private _snackBarService: SnackBarService
+    private _snackBarService: SnackBarService,
+    private _nivelObreiroService: NivelObreiroService
   ) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+
+    this.sub.push(
+      this._nivelObreiroService.retornaListaNiveisObreiros().subscribe(niveisObreiros => {
+        this.nivelObreiroLista = niveisObreiros;
+      })
+    );
 
     if (!id) {
       this.titulo = 'Cadastrar Usuario';
@@ -112,6 +123,7 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
         cpf: this.formBasico.value.cpf.replace(/[^0-9]/g, ''),
         rg: this.formBasico.value.rg,
         nascimento: this.formBasico.value.nascimento,
+        nivel_obreiro: this.formBasico.value.nivel_obreiro,
         ativo: 1,
       }
 
@@ -140,6 +152,7 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
         cim: this.formBasico.value.cim,
         cpf: this.formBasico.value.cpf.replace(/[^0-9]/g, ''),
         rg: this.formBasico.value.rg,
+        nivel_obreiro: this.formBasico.value.nivel_obreiro,
         nascimento: this.formBasico.value.nascimento,
         ativo: 1,
       }).subscribe(() => {

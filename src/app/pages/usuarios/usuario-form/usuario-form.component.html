@@ -59,15 +59,23 @@
                             </mat-form-field>
                        </div>  
                        <div class="grid">
-                        <mat-form-field class="formFild">
-                            <input matInput placeholder="Digite o CPF" [(ngModel)]="usuario.cpf" formControlName="cpf"  name="cpf">
-                            <mat-error *ngIf="formBasico.controls['cpf'].hasError('required')">CPF é um campo obrigatorio</mat-error>
-                        </mat-form-field>
-                        <mat-form-field class="formFild">
-                            <input matInput placeholder="Digite o RG" [(ngModel)]="usuario.rg" formControlName="rg"  name="rg">
-                            <mat-error *ngIf="formBasico.controls['rg'].hasError('required')">RG é um campo obrigatorio</mat-error>
-                        </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o CPF" [(ngModel)]="usuario.cpf" formControlName="cpf"  name="cpf">
+                                <mat-error *ngIf="formBasico.controls['cpf'].hasError('required')">CPF é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o RG" [(ngModel)]="usuario.rg" formControlName="rg"  name="rg">
+                                <mat-error *ngIf="formBasico.controls['rg'].hasError('required')">RG é um campo obrigatorio</mat-error>
+                            </mat-form-field>
                         </div> 
+                        <div class="grid">
+                            <mat-form-field class="formFild">
+                                <mat-label>Selecione o nível do obreiro</mat-label>
+                                <mat-select [(ngModel)]="usuario.nivel_obreiro" formControlName="nivel_obreiro">
+                                  <mat-option *ngFor="let nivelObreiro of nivelObreiroLista" [value]="nivelObreiro.id">{{nivelObreiro.descricao}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
                        <br>
                         <div *ngIf="tipoFormulario === 'edita'" class="formFild">
                             <h4>Status: </h4>
@@ -75,7 +83,7 @@
                                <mat-radio-button value=1 [checked]="usuario.ativo === 1" (click)="ativo(1)" class="radioButton" color="primary">Ativo</mat-radio-button>
                                <mat-radio-button value=0 [checked]="usuario.ativo === 0" (click)="ativo(0)"  color="primary">Inativo</mat-radio-button>
                              </mat-radio-group>
-                         </div>
+                        </div>
                        
                        <div class="actions">
                         <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
