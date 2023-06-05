@@ -22,7 +22,6 @@ export class UsuarioReadComponent implements OnInit {
   displayedColumns = [
     'nome',
     'email',
-    'codigo_obreiro',
     'telefone',
     'iniciacao'
   ];

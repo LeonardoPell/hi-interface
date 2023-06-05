@@ -14,11 +14,6 @@
         <td mat-cell *matCellDef="let element" (click)="selectUsuario(element.id)"> {{element.email}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="codigo_obreiro">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Codigo do Obreiro</th>
-        <td mat-cell *matCellDef="let element" (click)="selectUsuario(element.id)"> {{element.codigo_obreiro}} </td>
-      </ng-container>
-
       <ng-container matColumnDef="telefone">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefone do Obreiro</th>
         <td mat-cell *matCellDef="let element" (click)="selectUsuario(element.id)"> {{element.telefone}} </td>
