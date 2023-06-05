@@ -17,7 +17,7 @@
 
                        <div class="grid">
                             <mat-form-field class="formFild formFild100">
-                                <textarea rows="5" matInput placeholder="Digite a descrição do evento" formControlName="descricao" name="descricao"></textarea>
+                                <textarea [(ngModel)]="evento.descricao" rows="5" matInput placeholder="Digite a descrição do evento" formControlName="descricao" name="descricao"></textarea>
                                 <mat-error *ngIf="formBasico.controls['descricao'].hasError('required')">Descrição é um campo obrigatorio</mat-error>
                             </mat-form-field>
                         </div>

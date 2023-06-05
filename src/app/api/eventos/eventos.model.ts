@@ -25,6 +25,19 @@ export class EventoService {
     );
   }
 
+  retornaEventoPorId(id: number): Observable<Evento> {
+    return this.http.get(`${this.baseUrl}${id}`).pipe(
+        map((response: any) => {
+            return response.dados;
+        }),
+        catchError((error) => {
+            const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
+            this._snackBarService.showMessage(message,true);
+            return of();
+        })
+    );
+  }
+
   cadastraEvento(evento: Evento): Observable<Evento> {
     return this.http.post<Evento>(`${this.baseUrl}`,evento).pipe(
         map((response: any) => {
@@ -37,4 +50,17 @@ export class EventoService {
         })
     );
   }  
+
+  editaEvento(evento: Evento, id: number): Observable<Evento> {
+    return this.http.patch<Evento>(`${this.baseUrl}${id}`,evento).pipe(
+        map((response: any) => {
+            return response.dados;
+        }),
+        catchError((error) => {
+            const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
+            this._snackBarService.showMessage(message,true);
+            return of();
+        })
+    );
+  }
 }

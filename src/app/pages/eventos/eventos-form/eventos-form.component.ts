@@ -51,6 +51,16 @@ export class EventosFormComponent implements OnInit, OnDestroy  {
       this.titulo = 'Editar Evento';
       this.descricaoBotao = 'Salvar';
       this.tipoFormulario = 'edita';
+
+      this.sub.push(
+        this._eventoService.retornaEventoPorId(Number(id)).subscribe(evento => {
+          evento.data = evento.data_hora_reuniao;
+          evento.hora = moment(evento.data_hora_reuniao).format('LT');
+          Object.assign(this.evento,evento);
+          this.formBasico.controls['data'].setValue(evento.data_hora_reuniao);
+          this.formBasico.controls['hora'].setValue(evento.hora);
+        })
+      );
     }
   }
 
@@ -68,10 +78,23 @@ export class EventosFormComponent implements OnInit, OnDestroy  {
       data_hora_reuniao
     };
 
-    this._eventoService.cadastraEvento(dadosEnvio).subscribe(evento => {
-      this._snackBarService.showMessage('Evento cadastrado com sucesso!');
-      this.router.navigate(['eventos']);
-    })
+    if(this.tipoFormulario === 'edita'){
+      const id = this.route.snapshot.paramMap.get('id');
+      this.sub.push(
+        this._eventoService.editaEvento(dadosEnvio,Number(id)).subscribe(evento => {
+          this._snackBarService.showMessage('Evento editado com sucesso!');
+          this.router.navigate(['eventos']);
+        })
+      );
+      return;
+    }
+
+    this.sub.push(
+      this._eventoService.cadastraEvento(dadosEnvio).subscribe(evento => {
+        this._snackBarService.showMessage('Evento cadastrado com sucesso!');
+        this.router.navigate(['eventos']);
+      })
+    );
 
   }
 

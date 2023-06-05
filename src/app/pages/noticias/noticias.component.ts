@@ -26,7 +26,9 @@ export class NoticiasComponent implements OnInit, OnDestroy {
     plugins: [dayGridPlugin],
     eventClick: this.handleEventClick.bind(this),
     eventClassNames: 'event-high',
-    eventDisplay: 'block'
+    buttonText: {
+      today: 'Hoje'
+    }
   };
 
   constructor(
