@@ -17,7 +17,7 @@ export class EventosPresencaComponent implements OnInit, OnDestroy {
   todosUsuarios: DadosUsuario[] = [];
   listaPresenca: number[] = [];
 
-  titulo = 'Cadastrar Presença';
+  titulo = 'Lista de Presença';
 
   constructor(
     private _usuariosService: UsuarioService,
