@@ -1,6 +1,6 @@
 <div class="container">
 
-    <app-filtro-tabela [rota]="'/eventos/create'" [descricaoBotaoNovo]="'Cadastrar Evento'" [descricaoTitulo]="'Eventos'" [recebeLista]="listaEventos" (valorFiltro)="recebeValorFiltro($event)"></app-filtro-tabela>
+    <app-filtro-tabela [rota]="'/eventos/create'" [descricaoBotaoNovo]="'Cadastrar Evento'" [permissaoCadastro]="permissaoCadastro" [descricaoTitulo]="'Eventos'" [recebeLista]="listaEventos" (valorFiltro)="recebeValorFiltro($event)"></app-filtro-tabela>
   
     <table mat-table [dataSource]="listaEventos" matSort class="mat-elevation-z8">
   

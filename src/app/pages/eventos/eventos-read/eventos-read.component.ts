@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { EventoService } from 'src/app/api/eventos/eventos.model';
 import { Evento } from 'src/app/core/interface/evento/evento.model';
 import * as moment from 'moment';
+import { PermissaoService } from 'src/app/core/services/permissao.service';
 
 @Component({
   selector: 'app-eventos-read',
@@ -16,6 +17,7 @@ import * as moment from 'moment';
 export class EventosReadComponent implements OnInit, OnDestroy {
 
   filtroNaoEncontrado = '';
+  permissaoCadastro = false;
 
   sub: Subscription[] = [];
 
@@ -34,10 +36,16 @@ export class EventosReadComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private _eventoService: EventoService
+    private _eventoService: EventoService,
+    private _permissaoService: PermissaoService,
   ) { }
 
   ngOnInit(): void {
+
+    if(this._permissaoService.validaPermissaoRotina([1,5,7])){
+      this.permissaoCadastro = true;
+    }
+
     this.sub.push(
       this._eventoService.retornaListaEventos().subscribe(eventos => {
         eventos.map(evento => {
@@ -54,7 +62,11 @@ export class EventosReadComponent implements OnInit, OnDestroy {
   }
 
   selectEvento(id: number) {
-    this.router.navigate(['/eventos/edit/' + id]);
+    if(this._permissaoService.validaPermissaoRotina([1,5,7])){
+      this.router.navigate(['/eventos/edit/' + id]);
+      return;
+    }
+    return;
   }
 
   atualizaValoresMatTable(lista: Evento[]) {
