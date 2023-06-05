@@ -20,7 +20,7 @@
         </mat-expansion-panel-header>
         <mat-nav-list>
            <span *ngFor="let submenu of menu.children">
-            <mat-list-item [routerLink]="submenu.routerLink" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:
+            <mat-list-item *ngIf="!submenu?.bloqueio" [routerLink]="submenu.routerLink" routerLinkActive="is-active" [routerLinkActiveOptions]="{exact:
                 true}">
                 <mat-icon>{{submenu.icon}}</mat-icon> {{submenu.text}}
             </mat-list-item>
