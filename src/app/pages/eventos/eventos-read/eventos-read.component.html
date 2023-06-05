@@ -1,0 +1,40 @@
+<div class="container">
+
+    <app-filtro-tabela [rota]="'/eventos/create'" [descricaoBotaoNovo]="'Cadastrar Evento'" [descricaoTitulo]="'Eventos'" [recebeLista]="listaEventos" (valorFiltro)="recebeValorFiltro($event)"></app-filtro-tabela>
+  
+    <table mat-table [dataSource]="listaEventos" matSort class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Codigo Reunião</th>
+        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> #{{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="titulo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Titulo</th>
+        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{element.titulo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="data">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Data Evento</th>
+        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{element.data}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="hora">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora Reunião</th>
+        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{element.hora}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Não existe esta informação deste usuarios para filtrar "{{filtroNaoEncontrado}}"</td>
+      </tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" [pageSize]="10"
+      showFirstLastButtons></mat-paginator>
+  
+  </div>
+  

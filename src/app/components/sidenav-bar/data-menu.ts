@@ -20,5 +20,9 @@ export var dadosMenu = [
       },
     ],
   },
-  
+  {
+    text: 'Eventos',
+    icon: 'event',
+    routerLink: '/eventos',
+  },
 ];

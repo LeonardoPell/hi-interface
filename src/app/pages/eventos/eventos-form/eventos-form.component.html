@@ -1,0 +1,55 @@
+<div class="containerApp">
+    <div class="tittle">
+        <h1>{{titulo}}</h1>
+    </div>
+    <mat-tab-group animationDuration="500ms">
+        <mat-tab label="Informações basicas">
+            <div class="card-conatiner mat-elevation-z8">
+                <mat-card class="card">
+                   
+                    <form [formGroup]="formBasico" novalidate >
+                       <div class="grid">
+                            <mat-form-field class="formFild formFild100">
+                                <input matInput placeholder="Digite o titulo" [(ngModel)]="evento.titulo" formControlName="titulo"  name="titulo">
+                                <mat-error *ngIf="formBasico.controls['titulo'].hasError('required')">Titulo é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                       </div>
+
+                       <div class="grid">
+                            <mat-form-field class="formFild formFild100">
+                                <textarea rows="5" matInput placeholder="Digite a descrição do evento" formControlName="descricao" name="descricao"></textarea>
+                                <mat-error *ngIf="formBasico.controls['descricao'].hasError('required')">Descrição é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="grid">
+                            <mat-form-field (click)="pickerDataEvento.open()" class="formFild">
+                                <mat-label>Data Evento</mat-label>
+                                <input matInput [matDatepicker]="pickerDataEvento" formControlName="data" name="data" class="formFild" readonly>
+                                <mat-hint>DD/MM/YYYY</mat-hint>
+                                <mat-error *ngIf="formBasico.controls['data'].hasError('required')">Data é um campo obrigatorio</mat-error>
+                                <mat-datepicker-toggle matSuffix [for]="pickerDataEvento"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerDataEvento></mat-datepicker>
+                             </mat-form-field>
+                             <mat-form-field class="formFild">
+                                <input matInput placeholder="Hora do evento" type="time" formControlName="hora" name="hora">
+                                <mat-error *ngIf="formBasico.controls['hora'].hasError('required')">Hora é um campo obrigatorio</mat-error>
+                             </mat-form-field>
+                       </div>                       
+                       <div class="actions">
+                        <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
+                            {{descricaoBotao}}
+                        </button>
+                        <button mat-raised-button class="cancela" (click)="cancela()">
+                            Voltar
+                        </button>
+                    </div>
+
+                    </form>
+                </mat-card>
+               
+            </div>
+               
+        </mat-tab>
+       
+    </mat-tab-group>
+</div>
