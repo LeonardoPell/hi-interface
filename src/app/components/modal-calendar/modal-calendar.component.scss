@@ -1,0 +1,19 @@
+.tituloDialogCalendar{
+    width: 100%;
+    text-align: center;
+}
+
+.headerX{
+    width: 100%;
+    text-align: end;
+    h1{
+        cursor: pointer;
+    }
+    h1:hover{
+        color: gray;
+    }
+}
+
+p,span{
+    font-size: 20px;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,7 +13,7 @@ import * as moment from 'moment';
   templateUrl: './eventos-read.component.html',
   styleUrls: ['./eventos-read.component.scss']
 })
-export class EventosReadComponent implements OnInit {
+export class EventosReadComponent implements OnInit, OnDestroy {
 
   filtroNaoEncontrado = '';
 
