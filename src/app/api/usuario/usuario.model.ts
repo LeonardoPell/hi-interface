@@ -18,7 +18,7 @@ export class UsuarioService {
             return response.dados;
         }),
         catchError((error) => {
-            const message = (error?.error?.message) ? error.error.message : error.message;
+            const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
             this._snackBarService.showMessage(message,true);
             return of();
         })
@@ -31,7 +31,7 @@ export class UsuarioService {
             return response.dados;
         }),
         catchError((error) => {
-            const message = (error?.error?.message) ? error.error.message : error.message;
+            const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
             this._snackBarService.showMessage(message,true);
             return of();
         })
@@ -44,7 +44,7 @@ export class UsuarioService {
             return response.dados;
         }),
         catchError((error) => {
-            const message = (error?.error?.message) ? error.error.message : error.message;
+            const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
             this._snackBarService.showMessage(message,true);
             return of();
         })
@@ -57,7 +57,7 @@ export class UsuarioService {
             return response.dados;
         }),
         catchError((error) => {
-            const message = (error?.error?.message) ? error.error.message : error.message;
+            const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
             this._snackBarService.showMessage(message,true);
             return of();
         })
