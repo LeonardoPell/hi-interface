@@ -8,13 +8,15 @@ import { EventosFormComponent } from './eventos-form/eventos-form.component';
 import { MaterialModule } from 'src/app/core/material/material.module';
 import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabela.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EventosPresencaComponent } from './eventos-presenca/eventos-presenca.component';
 
 
 @NgModule({
   declarations: [
     EventosViewComponent,
     EventosReadComponent,
-    EventosFormComponent
+    EventosFormComponent,
+    EventosPresencaComponent
   ],
   imports: [
     CommonModule,

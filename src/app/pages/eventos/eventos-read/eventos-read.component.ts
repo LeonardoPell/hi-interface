@@ -25,7 +25,8 @@ export class EventosReadComponent implements OnInit, OnDestroy {
     'codigo',
     'titulo',
     'data',
-    'hora'
+    'hora',
+    'acao'
   ];
 
   todosEventos: Evento[] = [];
@@ -64,6 +65,14 @@ export class EventosReadComponent implements OnInit, OnDestroy {
   selectEvento(id: number) {
     if(this._permissaoService.validaPermissaoRotina([1,5,7])){
       this.router.navigate(['/eventos/edit/' + id]);
+      return;
+    }
+    return;
+  }
+
+  cadastrarPresenca(id: number){
+    if(this._permissaoService.validaPermissaoRotina([1,5,7])){
+      this.router.navigate(['/eventos/presenca/' + id]);
       return;
     }
     return;
