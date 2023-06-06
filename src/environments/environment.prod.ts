@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://3.145.8.35:3000'
+  api: 'https://backend.hiram1414.com.br'
 };
