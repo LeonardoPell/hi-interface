@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { dadosMenu } from './data-menu';
+import { PermissaoService } from 'src/app/core/services/permissao.service';
+import { DadosUsuario } from 'src/app/core/interface/usuario/dadosUsuario.model';
 
 @Component({
   selector: 'app-sidenav-bar',
@@ -10,11 +12,23 @@ export class SidenavBarComponent implements OnInit {
 
   menuList: any[] = [];
   acessoMenuChildren: boolean[] = [];
+  dadosUsuario: DadosUsuario;
 
-  constructor() { }
+  constructor(
+    private _permissaoService: PermissaoService,
+  ) { }
 
   ngOnInit(): void {
     dadosMenu.map((menu) => {
+      if(menu?.children){
+        menu.children.map((children: any) => {
+          if(children?.nivelPermissao){
+            if(!this._permissaoService.validaPermissaoRotina(children.nivelPermissao)){
+              children.bloqueio = true;
+            }
+          }
+        })
+      }
       this.menuList.push(menu);
     });
   }

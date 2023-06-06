@@ -1,18 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
-import { DadosUsuario, UsuarioCadastro, UsuarioEditado } from 'src/app/core/interface/usuario/dadosUsuario.model';
+import { Evento } from 'src/app/core/interface/evento/evento.model';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
-  baseUrl = `${environment.api}/usuario/`;
+export class EventoService {
+  baseUrl = `${environment.api}/reunioes/`;
   constructor(private http: HttpClient,private _snackBarService: SnackBarService) { }
 
-  retornaListaUsuarios(): Observable<DadosUsuario[]> {
+  retornaListaEventos(): Observable<Evento[]> {
     return this.http.get(`${this.baseUrl}`).pipe(
         map((response: any) => {
             return response.dados;
@@ -25,7 +25,7 @@ export class UsuarioService {
     );
   }
 
-  retornaUsuarioPorId(id: number): Observable<DadosUsuario> {
+  retornaEventoPorId(id: number): Observable<Evento> {
     return this.http.get(`${this.baseUrl}${id}`).pipe(
         map((response: any) => {
             return response.dados;
@@ -38,8 +38,8 @@ export class UsuarioService {
     );
   }
 
-  cadastraUsuario(usuario: UsuarioCadastro): Observable<UsuarioCadastro> {
-    return this.http.post<UsuarioCadastro>(`${this.baseUrl}`,usuario).pipe(
+  cadastraEvento(evento: Evento): Observable<Evento> {
+    return this.http.post<Evento>(`${this.baseUrl}`,evento).pipe(
         map((response: any) => {
             return response.dados;
         }),
@@ -49,10 +49,10 @@ export class UsuarioService {
             return of();
         })
     );
-  }
+  }  
 
-  editaUsuario(usuario: UsuarioEditado,id: number): Observable<UsuarioEditado> {
-    return this.http.patch<UsuarioEditado>(`${this.baseUrl}${id}`,usuario).pipe(
+  editaEvento(evento: Evento, id: number): Observable<Evento> {
+    return this.http.patch<Evento>(`${this.baseUrl}${id}`,evento).pipe(
         map((response: any) => {
             return response.dados;
         }),
@@ -63,5 +63,4 @@ export class UsuarioService {
         })
     );
   }
-  
 }

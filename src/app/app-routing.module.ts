@@ -35,6 +35,13 @@ const routes: Routes = [
             (m) => m.PalavraSemestralModule
           ),
       },
+      {
+        path: 'eventos',
+        loadChildren: () =>
+          import('./pages/eventos/eventos.module').then(
+            (m) => m.EventosModule
+          ),
+      },
     ],
     canActivate: [AuthGuard]
   },

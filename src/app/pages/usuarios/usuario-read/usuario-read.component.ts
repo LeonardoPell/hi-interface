@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { UsuarioService } from 'src/app/api/usuario/usuario.model';
 import { DadosUsuario } from 'src/app/core/interface/usuario/dadosUsuario.model';
 import * as moment from 'moment';
+import { PermissaoService } from 'src/app/core/services/permissao.service';
 
 @Component({
   selector: 'app-usuario-read',
@@ -16,13 +17,13 @@ import * as moment from 'moment';
 export class UsuarioReadComponent implements OnInit {
 
   filtroNaoEncontrado = '';
-
+  permissaoCadastro = false;
+ 
   sub: Subscription[] = [];
 
   displayedColumns = [
     'nome',
     'email',
-    'codigo_obreiro',
     'telefone',
     'iniciacao'
   ];
@@ -32,13 +33,19 @@ export class UsuarioReadComponent implements OnInit {
   listaUsuario: MatTableDataSource<DadosUsuario>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
+  
   constructor(
     private router: Router,
-    private _usuarioService: UsuarioService
+    private _usuarioService: UsuarioService,
+    private _permissaoService: PermissaoService,
   ) { }
 
   ngOnInit(): void {
+
+    if(this._permissaoService.validaPermissaoRotina([1])){
+      this.permissaoCadastro = true;
+    }
+
     this.sub.push(
       this._usuarioService.retornaListaUsuarios().subscribe(usuarios => {
         this.atualizaValoresMatTable(usuarios);
@@ -51,7 +58,11 @@ export class UsuarioReadComponent implements OnInit {
   }
 
   selectUsuario(id: number) {
-    this.router.navigate(['/usuarios/edit/' + id]);
+    if(this._permissaoService.validaPermissaoRotina([1])){
+      this.router.navigate(['/usuarios/edit/' + id]);
+      return;
+    }
+    return;
   }
 
   inativaUsuario(id: DadosUsuario){

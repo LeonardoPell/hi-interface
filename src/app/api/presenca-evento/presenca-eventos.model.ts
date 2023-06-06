@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
+import { PresencaEvento } from 'src/app/core/interface/presenca-evento/presenca-evento.model';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PalavraSemestralService {
-  baseUrl = `${environment.api}/palavra-semestral/`;
+export class PresencaEventoService {
+  baseUrl = `${environment.api}/presenca-reuniao/`;
   constructor(private http: HttpClient,private _snackBarService: SnackBarService) { }
 
-  retornaPalavraSemestral(): Observable<{palavra: string}> {
-    return this.http.get(`${this.baseUrl}`).pipe(
+  retornaListaPresencaPorIdReuniao(id_reuniao: number): Observable<PresencaEvento> {
+    return this.http.get(`${this.baseUrl}${id_reuniao}`).pipe(
         map((response: any) => {
             return response.dados;
         }),
@@ -23,8 +24,9 @@ export class PalavraSemestralService {
         })
     );
   }
-  editaPalavraSemestral(palavra: string,id: number): Observable<{palavra: string}> {
-    return this.http.patch<{palavra: string}>(`${this.baseUrl}${id}`,{palavra}).pipe(
+
+  editaListaPresenca(usuarios: number[], id_reuniao: number): Observable<PresencaEvento> {
+    return this.http.patch<PresencaEvento>(`${this.baseUrl}${id_reuniao}`,{usuarios_presentes: usuarios}).pipe(
         map((response: any) => {
             return response.dados;
         }),
@@ -35,5 +37,4 @@ export class PalavraSemestralService {
         })
     );
   }
-  
 }

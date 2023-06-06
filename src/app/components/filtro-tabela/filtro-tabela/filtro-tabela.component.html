@@ -18,7 +18,7 @@
                 <mat-icon>refresh</mat-icon>
             </button>
            <span *ngIf="rota !== ''">
-            <button class="botaoAdd" mat-fab color="primary" #tooltip="matTooltip"
+            <button *ngIf="permissaoCadastro" class="botaoAdd" mat-fab color="primary" #tooltip="matTooltip"
             matTooltip="{{descricaoBotaoNovo}}" (click)="novo()">
                 <mat-icon>add</mat-icon>
             </button>

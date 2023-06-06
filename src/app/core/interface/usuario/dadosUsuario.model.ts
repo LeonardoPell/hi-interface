@@ -3,7 +3,6 @@ export interface DadosUsuario {
     nome: string;
     email: string;
     cim: string;
-    codigo_obreiro: string;
     telefone: string;
     cpf: string;
     rg: string;
@@ -11,6 +10,8 @@ export interface DadosUsuario {
     iniciacao: string;
     criado_em: string;
     atualizado_em: string | null;
+    ativo?: boolean;
+    nivel_obreiro?: number;
   }
 
 export interface UsuarioCadastro{
@@ -18,13 +19,13 @@ export interface UsuarioCadastro{
     email: string;
     cim: string;
     senha: string;
-    codigo_obreiro: string;
     telefone: string;
     cpf: string;
     rg: string;
     nascimento: string;
     iniciacao: string;
-    ativo: number;
+    ativo: boolean;
+    nivel_obreiro?: number;
 }
 
 export interface UsuarioEditado{
@@ -32,11 +33,11 @@ export interface UsuarioEditado{
   email?: string;
   cim?: string;
   senha?: string;
-  codigo_obreiro?: string;
   telefone?: string;
   cpf?: string;
   rg?: string;
   nascimento?: string;
   iniciacao?: string;
-  ativo?: number;
+  ativo?: boolean;
+  nivel_obreiro?: number;
 }

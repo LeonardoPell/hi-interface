@@ -21,6 +21,8 @@ export class FiltroTabelaComponent implements OnInit {
 
   @Output() valorFiltro: EventEmitter<string> = new EventEmitter<string>();
 
+  @Input() permissaoCadastro = false;
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.recebeLista.filter = filterValue.trim().toLowerCase();

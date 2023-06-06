@@ -17,8 +17,13 @@ export var dadosMenu = [
         text: 'Palavra Semestral',
         icon: 'book',
         routerLink: '/palavra-semestral',
+        nivelPermissao: [1]
       },
     ],
   },
-  
+  {
+    text: 'Eventos',
+    icon: 'event',
+    routerLink: '/eventos',
+  },
 ];
