@@ -20,7 +20,7 @@
                 <mat-error *ngIf="formLogin.controls['senha'].hasError('required')">Senha é um campo obrigatorio</mat-error>
             </mat-form-field>
             <mat-form-field class="formFild">
-                <input matInput placeholder="Digite a sua palavra semestral" type="text"  formControlName="palavraSemestral"  name="palavraSemestral">
+                <input matInput placeholder="Digite a sua palavra semestral" type="password"  formControlName="palavraSemestral"  name="palavraSemestral">
                 <mat-error *ngIf="formLogin.controls['palavraSemestral'].hasError('required')">Palavra Semestral é um campo obrigatorio</mat-error>
             </mat-form-field>
             <div class="acao">
