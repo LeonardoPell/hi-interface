@@ -18,10 +18,16 @@ export class SidenavComponent implements OnInit {
     this.dadosUsuario = this._dadosUsuarioService.pegaDadosUsuario();
   }
 
+  meuPerfil(){
+    this.router.navigate(['/usuarios/edit/' + this._dadosUsuarioService.pegaDadosUsuario()?.id], { queryParams: { minhaConta: 'true' } });
+    return;
+  }
+
   deslogar() {
     localStorage.clear();
     location.reload();
     this.router.navigate(['login']);
+    return;
   }
 
 }

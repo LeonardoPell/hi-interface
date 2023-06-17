@@ -8,7 +8,7 @@
    
     <button mat-button [matMenuTriggerFor]="menu"><span class="nomeUsuario">{{dadosUsuario.nome}}</span><mat-icon >person</mat-icon></button>
       <mat-menu #menu="matMenu">
-      <button mat-menu-item >Minha conta</button>
+      <button mat-menu-item (click)="meuPerfil()">Minha conta</button>
       <button mat-menu-item (click)="deslogar()">Deslogar</button>
     </mat-menu>
     
