@@ -1,0 +1,40 @@
+<div class="container">
+
+    <app-filtro-tabela [descricaoTitulo]="'Relatorio Presenca'" [recebeLista]="listaDadosRelatorio" (valorFiltro)="recebeValorFiltro($event)"></app-filtro-tabela>
+  
+    <table mat-table [dataSource]="listaDadosRelatorio" matSort class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Obreiro</th>
+        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{element.nome}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nEventosParticipados">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nº Eventos Participados</th>
+        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{element.quantidadeReunioes}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nEventosTotais">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nº Eventos Existentes</th>
+        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{nTotalDeEventos}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="presenca">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Porcentagem de Presença</th>
+        <td mat-cell *matCellDef="let element" [ngStyle]="{'color': element.cor}" (click)="selectEvento(element.id)"> {{element.porcentagem.toFixed(0)}}% </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Não existe esta informação deste usuarios para filtrar "{{filtroNaoEncontrado}}"</td>
+      </tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" [pageSize]="10"
+      showFirstLastButtons></mat-paginator>
+  
+  </div>
+  

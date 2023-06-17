@@ -22,8 +22,19 @@ export var dadosMenu = [
     ],
   },
   {
-    text: 'Eventos',
+    text: 'Evento',
     icon: 'event',
-    routerLink: '/eventos',
+    children: [
+      {
+        text: 'Eventos',
+        routerLink: '/eventos',
+        icon: 'event_available',
+      },
+      {
+        text: 'Presença',
+        routerLink: '/eventos/relatorio/presenca',
+        icon: 'playlist_add_check',
+      }
+    ]
   },
 ];
