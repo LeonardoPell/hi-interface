@@ -50,12 +50,12 @@
                        <br>
                        <div class="grid">
                             <mat-form-field class="formFild">
-                                <input matInput placeholder="Digite o CIM" [(ngModel)]="usuario.cim" formControlName="cim"  name="cim">
+                                <input [readonly]="minhaConta" matInput placeholder="Digite o CIM" [(ngModel)]="usuario.cim" formControlName="cim"  name="cim">
                                 <mat-error *ngIf="formBasico.controls['cim'].hasError('required')">CIM é um campo obrigatorio</mat-error>
                             </mat-form-field>
                             <mat-form-field class="formFild">
                                 <mat-label>Selecione o nível do obreiro</mat-label>
-                                <mat-select [(ngModel)]="usuario.nivel_obreiro" formControlName="nivel_obreiro">
+                                <mat-select [disabled]="minhaConta" [(ngModel)]="usuario.nivel_obreiro" formControlName="nivel_obreiro">
                                   <mat-option *ngFor="let nivelObreiro of nivelObreiroLista" [value]="nivelObreiro.id">{{nivelObreiro.descricao}}</mat-option>
                                 </mat-select>
                             </mat-form-field>

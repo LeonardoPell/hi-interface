@@ -33,6 +33,7 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
   descricaoBotao = '';
   nivelObreiroLista: any[] = [];
   usuarioAtivo: boolean = true;
+  minhaConta = false;
 
   mask = [
     '(',
@@ -75,6 +76,12 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+
+    this.sub.push(
+      this.route.queryParams.subscribe(params => {
+        this.minhaConta = params['minhaConta'] === 'true';
+      })
+    );
 
     this.sub.push(
       this._nivelObreiroService.retornaListaNiveisObreiros().subscribe(niveisObreiros => {
