@@ -60,6 +60,11 @@ export class InicialComponent implements OnInit, OnDestroy {
     this.esconderSenha = !this.esconderSenha;
   }
 
+  alertaManutencao(){
+    alert('Em manutenção..');
+    return;
+  }
+
   ngOnDestroy() {
     this.sub.forEach((s) => s.unsubscribe());
   }
