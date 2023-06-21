@@ -2,6 +2,11 @@ export var dadosMenu = [
   {
     text: 'Home',
     icon: 'home',
+    routerLink: '/botoes',
+  },
+  {
+    text: 'Calendário',
+    icon: 'calendar_today',
     routerLink: '/noticias',
   },
   {
