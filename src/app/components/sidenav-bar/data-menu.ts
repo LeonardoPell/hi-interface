@@ -26,7 +26,7 @@ export var dadosMenu = [
       },
     ],
   },
-  {
+  /*{
     text: 'Financeiro',
     icon: 'attach_money',
     children: [
@@ -36,7 +36,7 @@ export var dadosMenu = [
         icon: 'money',
       },
     ]
-  },
+  },*/
   {
     text: 'Evento',
     icon: 'event',
