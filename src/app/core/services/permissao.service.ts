@@ -15,6 +15,10 @@ export class PermissaoService {
             return true;
         }
 
+        if(!permissaoNecessaria.length){
+            return true;
+        }
+
         if(permissaoNecessaria.includes(permissaoAtual)){
             return true;
         }
