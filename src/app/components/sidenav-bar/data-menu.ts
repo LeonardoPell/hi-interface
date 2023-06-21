@@ -27,6 +27,17 @@ export var dadosMenu = [
     ],
   },
   {
+    text: 'Financeiro',
+    icon: 'attach_money',
+    children: [
+      {
+        text: 'Balancete',
+        routerLink: '/financeiro/balancete',
+        icon: 'money',
+      },
+    ]
+  },
+  {
     text: 'Evento',
     icon: 'event',
     children: [

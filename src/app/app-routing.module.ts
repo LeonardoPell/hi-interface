@@ -49,6 +49,13 @@ const routes: Routes = [
             (m) => m.EventosModule
           ),
       },
+      {
+        path: 'financeiro',
+        loadChildren: () =>
+          import('./pages/financeiro/financeiro.module').then(
+            (m) => m.FinanceiroModule
+          ),
+      }
     ],
     canActivate: [AuthGuard]
   },
