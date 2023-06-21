@@ -2,7 +2,7 @@ export var dadosMenu = [
   {
     text: 'Home',
     icon: 'home',
-    routerLink: '/botoes',
+    routerLink: '/menu',
   },
   {
     text: 'Calendário',
