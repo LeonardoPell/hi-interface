@@ -82,13 +82,18 @@ export class EventosReadComponent implements OnInit, OnDestroy {
   }
 
   alteraAconteceuReuniao(reuniao: Evento){
-    reuniao.reuniao_aconteceu = (reuniao.reuniao_aconteceu) ? false : true;
-    this.sub.push(
-      this._eventoService.editaEvento(reuniao,Number(reuniao.id)).subscribe(evento => {
-        this._snackBarService.showMessage('Evento editado com sucesso!');
-        return;
-      })
-    );
+    if(this.permissaoCadastro){
+      reuniao.reuniao_aconteceu = (reuniao.reuniao_aconteceu) ? false : true;
+      this.sub.push(
+        this._eventoService.editaEvento(reuniao,Number(reuniao.id)).subscribe(evento => {
+          this._snackBarService.showMessage('Evento editado com sucesso!');
+          return;
+        })
+      );
+    }else{
+      this._snackBarService.showMessage('Você não tem permissão para realizar esta ação!',true);
+      return;
+    }
   }
 
   retornaTextBotao(reuniao: Evento){
