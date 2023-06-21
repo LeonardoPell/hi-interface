@@ -15,7 +15,6 @@ export class EventosRelatorioPresencaComponent implements OnInit, OnDestroy {
 
   filtroNaoEncontrado = '';
   permissaoCadastro = false;
-  nTotalDeEventos = 0;
 
   sub: Subscription[] = [];
 
@@ -26,7 +25,7 @@ export class EventosRelatorioPresencaComponent implements OnInit, OnDestroy {
     'presenca'
   ];
 
-  todosDadosRelatorio: DadosUsuarioRelatorioEvento[] = [];
+  todosDadosRelatorio: DadosRelatorioEvento;
 
   listaDadosRelatorio: MatTableDataSource<DadosUsuarioRelatorioEvento>;
   @ViewChild(MatSort) sort: MatSort;
@@ -39,7 +38,7 @@ export class EventosRelatorioPresencaComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.sub.push(
       this._eventoService.retornaDadosRelatorioPresenca().subscribe((dadosRelatorio: DadosRelatorioEvento) => {
-        this.nTotalDeEventos = dadosRelatorio.qtdReunioesTotal
+        this.todosDadosRelatorio = dadosRelatorio;
         this.atualizaValoresMatTable(dadosRelatorio.dadosUsuarios);
       })
     );

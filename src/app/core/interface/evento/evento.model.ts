@@ -11,6 +11,8 @@ export interface Evento{
 export interface DadosRelatorioEvento {
     qtdReunioesTotal: number,
     dadosUsuarios: DadosUsuarioRelatorioEvento[],
+    qtdReunioesConfirmadas: number;
+    qtdReunioesNaoConfirmadas: number;
 }
 
 export interface DadosUsuarioRelatorioEvento{

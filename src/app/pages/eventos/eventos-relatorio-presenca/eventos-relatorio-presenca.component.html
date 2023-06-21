@@ -1,7 +1,10 @@
 <div class="container">
 
     <app-filtro-tabela [descricaoTitulo]="'Relatorio Presenca'" [recebeLista]="listaDadosRelatorio" (valorFiltro)="recebeValorFiltro($event)"></app-filtro-tabela>
-  
+    <div class="dados">
+      <h1>Total de Reuniões: {{todosDadosRelatorio.qtdReunioesTotal}}</h1> <h1>Total de Reuniões Confirmadas: {{todosDadosRelatorio.qtdReunioesConfirmadas}}</h1>
+    </div>
+    <br>
     <table mat-table [dataSource]="listaDadosRelatorio" matSort class="mat-elevation-z8">
   
       <ng-container matColumnDef="nome">
@@ -15,8 +18,8 @@
       </ng-container>
 
       <ng-container matColumnDef="nEventosTotais">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nº Eventos Existentes</th>
-        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{nTotalDeEventos}} </td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nº Eventos Confirmados</th>
+        <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{todosDadosRelatorio.qtdReunioesConfirmadas}} </td>
       </ng-container>
 
       <ng-container matColumnDef="presenca">
