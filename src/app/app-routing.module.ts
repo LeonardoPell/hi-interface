@@ -9,6 +9,7 @@ import { HistoriaHiramComponent } from './pages/historia-hiram/historia-hiram.co
 import { HistoriaMaconariaComponent } from './pages/historia-maconaria/historia-maconaria.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
+import { CalendarioInicialComponent } from './pages/calendario-inicial/calendario-inicial.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,9 @@ const routes: Routes = [
       },
       {
         path: 'login', component: LoginComponent
+      },
+      {
+        path: 'calendario', component: CalendarioInicialComponent
       }
     ]
   },

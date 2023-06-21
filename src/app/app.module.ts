@@ -24,6 +24,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import { ModalCalendarComponent } from './components/modal-calendar/modal-calendar.component';
 import { HistoriaMaconariaComponent } from './pages/historia-maconaria/historia-maconaria.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { CalendarioInicialComponent } from './pages/calendario-inicial/calendario-inicial.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MenuComponent } from './pages/menu/menu.component';
     HistoriaHiramComponent,
     ModalCalendarComponent,
     HistoriaMaconariaComponent,
-    MenuComponent
+    MenuComponent,
+    CalendarioInicialComponent
   ],
   imports: [
     HttpClientModule,
