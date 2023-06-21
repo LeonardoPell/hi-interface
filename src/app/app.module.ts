@@ -25,6 +25,7 @@ import { ModalCalendarComponent } from './components/modal-calendar/modal-calend
 import { HistoriaMaconariaComponent } from './pages/historia-maconaria/historia-maconaria.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { CalendarioInicialComponent } from './pages/calendario-inicial/calendario-inicial.component';
+import { ExVeneraveisComponent } from './pages/ex-veneraveis/ex-veneraveis.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CalendarioInicialComponent } from './pages/calendario-inicial/calendari
     ModalCalendarComponent,
     HistoriaMaconariaComponent,
     MenuComponent,
-    CalendarioInicialComponent
+    CalendarioInicialComponent,
+    ExVeneraveisComponent
   ],
   imports: [
     HttpClientModule,

@@ -10,6 +10,7 @@ import { HistoriaMaconariaComponent } from './pages/historia-maconaria/historia-
 import { MenuComponent } from './pages/menu/menu.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 import { CalendarioInicialComponent } from './pages/calendario-inicial/calendario-inicial.component';
+import { ExVeneraveisComponent } from './pages/ex-veneraveis/ex-veneraveis.component';
 
 const routes: Routes = [
   {
@@ -74,6 +75,9 @@ const routes: Routes = [
       },
       {
         path: 'calendario', component: CalendarioInicialComponent
+      },
+      {
+        path: 'ex-veneraveis', component: ExVeneraveisComponent
       }
     ]
   },
