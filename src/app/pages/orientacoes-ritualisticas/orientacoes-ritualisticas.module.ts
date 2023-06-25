@@ -7,12 +7,14 @@ import { OrientacoesRitualisticasReadComponent } from './orientacoes-ritualistic
 import { MaterialModule } from 'src/app/core/material/material.module';
 import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabela.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrientacoesRitualisticasFormComponent } from './orientacoes-ritualisticas-form/orientacoes-ritualisticas-form.component';
 
 
 @NgModule({
   declarations: [
     OrientacoesRitualisticasViewComponent,
-    OrientacoesRitualisticasReadComponent
+    OrientacoesRitualisticasReadComponent,
+    OrientacoesRitualisticasFormComponent
   ],
   imports: [
     CommonModule,
