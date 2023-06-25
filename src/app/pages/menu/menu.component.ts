@@ -40,7 +40,13 @@ export class MenuComponent implements OnInit {
       permissaoNecessaria: [],
       icon: '',
       endpoint: 'eventos/relatorio/presenca'
-    }
+    },
+    {
+      descricao: 'Orientações Ritualisticas',
+      permissaoNecessaria: [],
+      icon: '',
+      endpoint: 'orientacoes-ritualisticas'
+    },
   ];
 
   constructor(

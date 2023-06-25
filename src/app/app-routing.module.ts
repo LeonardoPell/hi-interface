@@ -55,6 +55,13 @@ const routes: Routes = [
           import('./pages/financeiro/financeiro.module').then(
             (m) => m.FinanceiroModule
           ),
+      },
+      {
+        path: 'orientacoes-ritualisticas',
+        loadChildren: () =>
+          import('./pages/orientacoes-ritualisticas/orientacoes-ritualisticas.module').then(
+            (m) => m.OrientacoesRitualisticasModule
+          ),
       }
     ],
     canActivate: [AuthGuard]

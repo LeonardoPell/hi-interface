@@ -53,4 +53,15 @@ export var dadosMenu = [
       }
     ]
   },
+  {
+    text: 'Documentos',
+    icon: 'book',
+    children: [
+      {
+        text: 'Orientações Ritualisticas',
+        routerLink: '/orientacoes-ritualisticas',
+        icon: 'bookmark',
+      },
+    ]
+  }
 ];
