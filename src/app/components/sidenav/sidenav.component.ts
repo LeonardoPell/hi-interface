@@ -23,6 +23,11 @@ export class SidenavComponent implements OnInit {
     return;
   }
 
+  vaiParaMenu(){
+    this.router.navigate(['menu']);
+    return;
+  }
+
   deslogar() {
     localStorage.clear();
     location.reload();
