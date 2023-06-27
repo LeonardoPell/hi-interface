@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NivelObreiroService } from 'src/app/api/nivel-obreiro/nivel-obreiro.model';
 import { UsuarioService } from 'src/app/api/usuario/usuario.model';
-import { UsuarioCadastro, UsuarioEditado } from 'src/app/core/interface/usuario/dadosUsuario.model';
+import { DadosUsuario, UsuarioCadastro, UsuarioEditado } from 'src/app/core/interface/usuario/dadosUsuario.model';
 import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 
 @Component({
@@ -86,7 +86,7 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
     nome_pai: ['', Validators.required],
     nome_mae: ['', Validators.required],
     nome_esposa: [''],
-    filhos: ['']
+    filhos: this.fb.array([])
   });
   
   constructor(
@@ -127,39 +127,60 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
           this.usuarioAtivo = Boolean(usuario.ativo);
           this.formBasico.controls['iniciacao'].setValue(usuario.iniciacao);
           this.formBasico.controls['nascimento'].setValue(usuario.nascimento);
+          this.formBasico.controls['elevacao'].setValue(usuario?.elevacao);
+          this.formBasico.controls['exaltacao'].setValue(usuario?.exaltacao);
+
+          this.filhos.clear();
+
+          if(usuario.filhos){
+            usuario.filhos.forEach((nomeFilho) => {
+              this.filhos.push(this.fb.control(nomeFilho, Validators.required));
+            });
+          }
         })
       );
     }
   }
 
   envia(){
-    debugger;
     if(!this.formBasico.valid){
       return;
     }
 
+    const dadosEnvioUsuario = {
+      nome: this.formBasico.value.nome,
+      telefone: this.formBasico.value.telefone.replace(/[^0-9]/g, ''),
+      senha: this.formBasico.value.senha,
+      email: this.formBasico.value.email,
+      iniciacao: this.formBasico.value.iniciacao,
+      cim: this.formBasico.value.cim,
+      cpf: this.formBasico.value.cpf.replace(/[^0-9]/g, ''),
+      rg: this.formBasico.value.rg,
+      nascimento: this.formBasico.value.nascimento,
+      nivel_obreiro: this.formBasico.value.nivel_obreiro,
+      ativo: true,
+      elevacao: this.formBasico.value.elevacao,
+      exaltacao: this.formBasico.value.exaltacao,
+      ime: this.formBasico.value.ime,
+      grau: this.formBasico.value.grau,
+      endereco_comercial: this.formBasico.value.endereco_comercial,
+      telefone_comercial: this.formBasico.value.telefone_comercial.replace(/[^0-9]/g, ''),
+      endereco_residencial: this.formBasico.value.endereco_residencial,
+      telefone_residencial: this.formBasico.value.telefone_residencial.replace(/[^0-9]/g, ''),
+      nome_pai: this.formBasico.value.nome_pai,
+      nome_mae: this.formBasico.value.nome_mae,
+      nome_esposa: this.formBasico.value.nome_esposa,
+      filhos: this.formBasico.value.filhos
+    }
+
     if(this.tipoFormulario == 'edita'){
 
-      const usuarioEditado: UsuarioEditado = {
-        nome: this.formBasico.value.nome,
-        telefone: this.formBasico.value.telefone.replace(/[^0-9]/g, ''),
-        senha: this.formBasico.value.senha,
-        email: this.formBasico.value.email,
-        iniciacao: this.formBasico.value.iniciacao,
-        cim: this.formBasico.value.cim,
-        cpf: this.formBasico.value.cpf.replace(/[^0-9]/g, ''),
-        rg: this.formBasico.value.rg,
-        nascimento: this.formBasico.value.nascimento,
-        nivel_obreiro: this.formBasico.value.nivel_obreiro,
-        ativo: true,
-      }
-
       if(!this.formBasico.value.senha || this.formBasico.value.senha === ''){
-        delete usuarioEditado.senha;
+        delete dadosEnvioUsuario.senha;
       }
       
       this.sub.push(
-        this._usuarioService.editaUsuario(usuarioEditado,Number(this.route.snapshot.paramMap.get('id'))).subscribe(() => {
+        this._usuarioService.editaUsuario(dadosEnvioUsuario,Number(this.route.snapshot.paramMap.get('id'))).subscribe(() => {
           this._snackBarService.showMessage('Usuario editado com sucesso!');
           this.router.navigate(['usuarios']);
           return;
@@ -169,19 +190,7 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
     }
 
     this.sub.push(
-      this._usuarioService.cadastraUsuario({
-        nome: this.formBasico.value.nome,
-        telefone: this.formBasico.value.telefone.replace(/[^0-9]/g, ''),
-        senha: this.formBasico.value.senha,
-        email: this.formBasico.value.email,
-        iniciacao: this.formBasico.value.iniciacao,
-        cim: this.formBasico.value.cim,
-        cpf: this.formBasico.value.cpf.replace(/[^0-9]/g, ''),
-        rg: this.formBasico.value.rg,
-        nivel_obreiro: this.formBasico.value.nivel_obreiro,
-        nascimento: this.formBasico.value.nascimento,
-        ativo: true,
-      }).subscribe(() => {
+      this._usuarioService.cadastraUsuario(dadosEnvioUsuario).subscribe(() => {
         this._snackBarService.showMessage('Usuario cadastrado com sucesso!');
         this.router.navigate(['usuarios']);
       })
@@ -190,6 +199,18 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
 
   cancela() {
     this.router.navigate(['usuarios']);
+  }
+
+  get filhos() {
+    return this.formBasico.get('filhos') as any;
+  }
+
+  adicionarFilho(): void {
+    this.filhos.push(this.fb.control('', Validators.required));
+  }
+
+  removerFilho(index: number): void {
+    this.filhos.removeAt(index);
   }
 
   ngOnDestroy() {

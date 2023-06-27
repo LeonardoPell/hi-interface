@@ -133,6 +133,19 @@
                                 <input matInput placeholder="Digite o Nome da Esposa (Caso tenha)" [(ngModel)]="usuario.nome_esposa" formControlName="nome_esposa"  name="nome_esposa">
                             </mat-form-field>
                         </div>
+                        
+                            <ng-container formArrayName="filhos">
+                                <div class="grid" *ngFor="let filho of filhos.controls; let i = index">
+                                    <mat-form-field>
+                                        <input matInput placeholder="Nome do filho {{ i + 1 }}" [formControlName]="i">
+                                        <button mat-icon-button color="warn" (click)="removerFilho(i)">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
+                                    </mat-form-field>
+                                </div>
+                              </ng-container>
+                            
+                              <button mat-raised-button color="primary" (click)="adicionarFilho()">Adicionar Filho</button>
                        <div class="actions">
                         <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
                             {{descricaoBotao}}
