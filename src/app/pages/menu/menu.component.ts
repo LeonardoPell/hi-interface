@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ItemMenu } from 'src/app/core/interface/menu/menu.model';
+import { DadosUsuarioService } from 'src/app/core/services/dados-usuario.service';
 import { PermissaoService } from 'src/app/core/services/permissao.service';
 
 @Component({
@@ -11,6 +12,12 @@ import { PermissaoService } from 'src/app/core/services/permissao.service';
 export class MenuComponent implements OnInit {
 
   itensMenu: ItemMenu[] = [
+    {
+      descricao: 'Meu Cadastro',
+      permissaoNecessaria: [],
+      icon: '',
+      endpoint: 'minhaConta'
+    },
     {
       descricao: 'Calendário',
       permissaoNecessaria: [],
@@ -52,6 +59,7 @@ export class MenuComponent implements OnInit {
   constructor(
     private _permissaoService: PermissaoService,
     private router: Router,
+    private _dadosUsuarioService: DadosUsuarioService
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +72,12 @@ export class MenuComponent implements OnInit {
   }
 
   redirecionaBotao(endpoint: string){
+
+    if(endpoint === 'minhaConta'){
+      this.router.navigate(['/usuarios/edit/' + this._dadosUsuarioService.pegaDadosUsuario()?.id], { queryParams: { minhaConta: 'true' } });
+      return;
+    }
+
     this.router.navigate([endpoint]);
     return;
   }
