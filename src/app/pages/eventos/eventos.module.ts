@@ -9,6 +9,7 @@ import { MaterialModule } from 'src/app/core/material/material.module';
 import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabela.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventosPresencaComponent } from './eventos-presenca/eventos-presenca.component';
+import { EventosRelatorioPresencaComponent } from './eventos-relatorio-presenca/eventos-relatorio-presenca.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { EventosPresencaComponent } from './eventos-presenca/eventos-presenca.co
     EventosViewComponent,
     EventosReadComponent,
     EventosFormComponent,
-    EventosPresencaComponent
+    EventosPresencaComponent,
+    EventosRelatorioPresencaComponent
   ],
   imports: [
     CommonModule,

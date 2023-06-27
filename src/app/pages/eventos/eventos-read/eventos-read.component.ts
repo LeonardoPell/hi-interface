@@ -8,6 +8,7 @@ import { EventoService } from 'src/app/api/eventos/eventos.model';
 import { Evento } from 'src/app/core/interface/evento/evento.model';
 import * as moment from 'moment';
 import { PermissaoService } from 'src/app/core/services/permissao.service';
+import { SnackBarService } from 'src/app/core/services/snack-bar.service';
 
 @Component({
   selector: 'app-eventos-read',
@@ -26,6 +27,7 @@ export class EventosReadComponent implements OnInit, OnDestroy {
     'titulo',
     'data',
     'hora',
+    'aconteceu',
     'acao'
   ];
 
@@ -39,6 +41,7 @@ export class EventosReadComponent implements OnInit, OnDestroy {
     private router: Router,
     private _eventoService: EventoService,
     private _permissaoService: PermissaoService,
+    private _snackBarService: SnackBarService,
   ) { }
 
   ngOnInit(): void {
@@ -68,6 +71,37 @@ export class EventosReadComponent implements OnInit, OnDestroy {
       return;
     }
     return;
+  }
+
+  retornaCorBotao(reuniao: Evento){
+    if(!reuniao.reuniao_aconteceu){
+      return 'primary'
+    }
+
+    return 'warn';
+  }
+
+  alteraAconteceuReuniao(reuniao: Evento){
+    if(this.permissaoCadastro){
+      reuniao.reuniao_aconteceu = (reuniao.reuniao_aconteceu) ? false : true;
+      this.sub.push(
+        this._eventoService.editaEvento(reuniao,Number(reuniao.id)).subscribe(evento => {
+          this._snackBarService.showMessage('Evento editado com sucesso!');
+          return;
+        })
+      );
+    }else{
+      this._snackBarService.showMessage('Você não tem permissão para realizar esta ação!',true);
+      return;
+    }
+  }
+
+  retornaTextBotao(reuniao: Evento){
+    if(!reuniao.reuniao_aconteceu){
+      return 'Confirmar Reunião'
+    }
+
+    return 'Cancelar Reunião';
   }
 
   cadastrarPresenca(id: number){

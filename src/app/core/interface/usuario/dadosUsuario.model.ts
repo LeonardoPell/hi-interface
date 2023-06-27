@@ -12,6 +12,18 @@ export interface DadosUsuario {
     atualizado_em: string | null;
     ativo?: boolean;
     nivel_obreiro?: number;
+    elevacao?: string;
+    exaltacao?: string;
+    ime?: string;
+    grau?: string;
+    endereco_comercial?: string;
+    telefone_comercial?: string;
+    endereco_residencial?: string;
+    telefone_residencial?: string;
+    nome_pai?: string;
+    nome_mae?: string;
+    nome_esposa?: string;
+    filhos?: string[];
   }
 
 export interface UsuarioCadastro{
@@ -26,6 +38,18 @@ export interface UsuarioCadastro{
     iniciacao: string;
     ativo: boolean;
     nivel_obreiro?: number;
+    elevacao?: string;
+    exaltacao?: string;
+    ime?: string;
+    grau?: string;
+    endereco_comercial?: string;
+    telefone_comercial?: string;
+    endereco_residencial?: string;
+    telefone_residencial?: string;
+    nome_pai?: string;
+    nome_mae?: string;
+    nome_esposa?: string;
+    filhos?: string[];
 }
 
 export interface UsuarioEditado{
@@ -40,4 +64,16 @@ export interface UsuarioEditado{
   iniciacao?: string;
   ativo?: boolean;
   nivel_obreiro?: number;
+  elevacao?: string;
+  exaltacao?: string;
+  ime?: string;
+  grau?: string;
+  endereco_comercial?: string;
+  telefone_comercial?: string;
+  endereco_residencial?: string;
+  telefone_residencial?: string;
+  nome_pai?: string;
+  nome_mae?: string;
+  nome_esposa?: string;
+  filhos?: string[];
 }

@@ -1,45 +1,49 @@
 <app-header-inicial></app-header-inicial>
 <section>
     <div class="containerImagens">
-        <div class="imagensEsquerda">
-            <img width="300" src="../../../assets/images/logo-gob-federal.png" alt="gob-federal">
-        </div>
-    
-        <div class="imagensCentro">
-            <div class="imagensCima">
-                <img width="300" src="../../../assets/images/standart-loja.jpeg" alt="standart">
-            </div>
-            <div class="imagensBaixo">
-                <img width="300" src="../../../assets/images/logo-loja.png" alt="logo-loja">
+        <div class="links">
+            <div class="containerLinks">
+                <a class="btnLinkHome" routerLink="/historia-hiram">História Hiram1414</a>
+                <a class="btnLinkHome" routerLink="/ex-veneraveis">Ex Veneráveis</a>
+                <a class="btnLinkHome" routerLink="/historia-maconaria">A Maçonaria</a>
             </div>
         </div>
-        <div class="imagensDireita">
-            <img width="300" src="../../../assets/images/logo-gob-mg.png" alt="gob-mg">
+        <div class="imagemCentro">
+            <img width="230" src="../../../assets/images/logo-loja.png" alt="logo loja hiram">
+            <img width="230" src="../../../assets/images/standart-loja.jpeg" alt="logo teamplate hiram">
+            <img width="230" src="../../../assets/images/logo-gob-federal.png" alt="logo gob federal">
+        </div>
+        <div class="links">
+            <div class="containerLinks">
+                <a class="btnLinkHome" routerLink="/calendario">Calendário</a>
+                <a class="btnLinkHome" (click)="alertaManutencao()">Área das cunhadas</a>
+                <a class="btnLinkHome" (click)="alertaManutencao()">Fotos de Eventos</a>
+            </div>
         </div>
     </div>
-</section>
-<section class="containerFotosExplicativas">
-    <div class="containerFoto">
-        <img src="../../../assets/images/inicial1.jpeg" alt="background">
-        <article>
-            <h1>História Hiram1414</h1>
-            <br>
-            <p>A Maçonaria surgiu na cidade de Belo Horizonte antes mesmo da sua inauguração como Capital Mineira, o que só ocorreu em 12/12/1897. Assim, em 1895, criou-se a Loja Maçônica Nazareth e, no ano seguinte, 1896, foi fundada a Loja Maçônica Marquês de Pombal, ambas possuindo Obreiros de várias nacionalidades, entre brasileiros, franceses, portugueses, italianos e alemães.</p>
-            <br>
-            <p>Embora tivessem vida harmônica, após reuniões de suas diretorias, decidiu-se pela unificação das duas Oficinas, para a formação de outra, e, por autorização do Supremo Conselho do GOB, no ano de 1898, transformaram-se na Loja Maçônica Deus, Humanidade e Luz, sediada nesta Capital <a routerLink="/historia-hiram">Leia mais...</a></p>
-        </article>
+    <div class="containerLogin">
+        <form [formGroup]="formLogin" novalidate>
+            <h2>Restrito aos Obreiros da Hiram:</h2>
+            <mat-form-field class="formFild">
+                <input (input)="somenteNumeros($event)" matInput placeholder="Digite o seu CIM" type="text"  formControlName="cim"  name="cim">
+                <mat-error *ngIf="formLogin.controls['cim'].hasError('required')">CIM é um campo obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="formFild">
+                <input matInput placeholder="Digite a sua senha" [type]="esconderSenha ? 'password' : 'text'"  formControlName="senha"  name="senha">
+                <button mat-icon-button matSuffix (click)="toggleVisibilidadeSenha()">
+                    <mat-icon>{{ esconderSenha ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                <mat-error *ngIf="formLogin.controls['senha'].hasError('required')">Senha é um campo obrigatorio</mat-error>
+            </mat-form-field>
+            <mat-form-field class="formFild">
+                <input matInput placeholder="Digite a sua palavra semestral" type="password"  formControlName="palavraSemestral"  name="palavraSemestral">
+                <mat-error *ngIf="formLogin.controls['palavraSemestral'].hasError('required')">Palavra Semestral é um campo obrigatorio</mat-error>
+            </mat-form-field>
+            <div class="acao">
+                <button mat-raised-button type="submit" (click)="salvar()" color="primary" class="botaoAcao">Entrar</button>
+            </div>
+        </form>
     </div>
-    <br><br><br><br>
-    <div class="containerFoto">
-        <article>
-            <h1>A maçonaria</h1>
-            <p>Historicamente a sociedade humana tem se organizado por grupos de interesse: religiosos, políticos, econômicos, etc. Ao mesmo tempo em que um ou mais de um determinado interesse caracteriza um grupo, origina também antagonismo entre um grupo e outro.</p>
-            <br>
-            <p>A História é densa em exemplos de conflitos deste tipo. O próprio caráter religioso protagonizou embates e incoerências cruéis “em nome de Deus”<a routerLink="/historia-maconaria">Leia mais...</a></p>
-        </article>
-        <img src="../../../assets/images/inicial2.jpeg" alt="background">
-    </div>
-    <br><br><br><br>
 </section>
 <section class="sectionParticipantesHiram">
     <div class="containerParticipantes">
@@ -78,7 +82,8 @@
             <div class="veneravel"><p>#13 | <span>07/07/1962 - 31/07/1963</span> | Alkimar Baeta Neves | <span>Eleito (2ª administração)</span></p></div>
             <div class="veneravel"><p>#14 | <span>31/07/1963 - 23/06/1965</span> | Alkimar Baeta Neves | <span>Eleito (3ª administração)</span></p></div>
             <div class="veneravel"><p>#15 | <span>23/06/1965 - 22/06/1967</span> | José Mendes de Carvalho | <span>Eleito (3ª administração)</span></p></div>
-            <div class="veneravel"><p>#16 | <span>24/06/1969 - 29/06/1971</span> | Élson de Miranda | <span>Eleito (2ª administração)</span></p></div>
+            <div class="veneravel"><p>#16 | <span>22/06/1967 - 24/06/1969</span> | Élson de Miranda | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#17 | <span>24/06/1969 - 29/06/1971</span> | Élson de Miranda | <span>Eleito (2ª administração)</span></p></div>
             <div class="veneravel"><p>#18 | <span>29/06/1971 - 26/06/1973</span> | José Mendes de Carvalho | <span>Eleito (4ª administração)</span></p></div>
             <div class="veneravel"><p>#19 | <span>26/06/1973 - 25/06/1975</span> | Joaquim Dias do Nascimento Filho | <span>Eleito</span></p></div>
             <div class="veneravel"><p>#20 | <span>25/06/1975 - 05/07/1977</span> | Élson de Miranda | <span>Eleito (3ª administração)</span></p></div>
@@ -97,6 +102,18 @@
             <div class="veneravel"><p>#33 | <span>06/06/1997 - 08/06/1999</span> | Adilson Lamounier | <span>Eleito</span></p></div>
             <div class="veneravel"><p>#34 | <span>08/06/1999 - 25/06/2001</span> | Shigueharu Sasaki | <span>Eleito</span></p></div>
             <div class="veneravel"><p>#35 | <span>25/06/2001 - 24/06/2003</span> | Francisco Massara Gabrich | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#36 | <span>24/06/2003 - 26/06/2005</span> | José Francisco Tudéia | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#37 | <span>26/06/2005 - 26/06/2007</span> | José Francisco Tudéia | <span>Eleito. Renunciou na 2ª Ses∴</span></p></div>
+            <div class="veneravel"><p>#38 | <span>26/06/2007 - 10/07/2007</span> | Dalton José de Oliveira | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#39 | <span>23/08/2007 - 23/06/2009</span> | Aloísio Batista dos Santos | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#40 | <span>23/06/2009 - 06/2011</span> | Ivan Moreira Lopes | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#41 | <span>06/2011 - 06/2013</span> | Paulo Célio Vieira | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#42 | <span>06/2013 - 06/2015</span> | André Luiz Padrão França | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#43 | <span>06/2015 - 06/2017</span> | José Francisco Tudeia | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#44 | <span>06/2017 - 06/2019</span> | Douglas de Almeida Costa | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#45 | <span>06/2019 - 06/2021</span> | Douglas de Almeida Costa | <span>Eleito (2ª administração)</span></p></div>
+            <div class="veneravel"><p>#46 | <span>06/2021 - 06/2023</span> | Dalmo Ribeiro Martins | <span>Eleito</span></p></div>
+            <div class="veneravel"><p>#47 | <span>06/2023 - Momento</span> | Marcello Pellegrino | <span>Eleito</span></p></div>
             <small><strong>passou por 47 administrações, sob a responsabilidade de (25) Mestres-Instalados, 
                 sendo que 13 (treze) INICIADOS na própria Oficina e os demais, Filiados. 
                 Dos 12 filiados, os Obreiros Alberto Amâncio Viana e José Francisco TUDÉIA,

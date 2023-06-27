@@ -38,28 +38,56 @@
                                 <mat-datepicker-toggle matSuffix [for]="pickeriniciacao"></mat-datepicker-toggle>
                                 <mat-datepicker #pickeriniciacao></mat-datepicker>
                              </mat-form-field>
-                             <mat-form-field (click)="pickerNascimento.open()" class="formFild">
-                                <mat-label>Data Nascimento</mat-label>
+                            <mat-form-field (click)="pickerElevacao.open()" class="formFild">
+                                <mat-label>Data Elevação</mat-label>
+                                <input matInput [matDatepicker]="pickerElevacao" formControlName="elevacao" name="elevacao" class="formFild" readonly>
+                                <mat-hint>DD/MM/YYYY</mat-hint >
+                                <mat-error *ngIf="formBasico.controls['elevacao'].hasError('required')">Data de Elevação é um campo obrigatorio</mat-error>
+                                <mat-datepicker-toggle matSuffix [for]="pickerElevacao"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerElevacao></mat-datepicker>
+                            </mat-form-field>
+                       </div>
+                       <div class="grid">
+                            <mat-form-field (click)="pickerExaltacao.open()" class="formFild">
+                                <mat-label>Data Exaltação</mat-label>
+                                <input matInput [matDatepicker]="pickerExaltacao" formControlName="exaltacao" name="exaltacao" class="formFild" readonly>
+                                <mat-hint>DD/MM/YYYY</mat-hint >
+                                <mat-error *ngIf="formBasico.controls['exaltacao'].hasError('required')">Data de Exaltação é um campo obrigatorio</mat-error>
+                                <mat-datepicker-toggle matSuffix [for]="pickerExaltacao"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerExaltacao></mat-datepicker>
+                            </mat-form-field>
+                            <mat-form-field (click)="pickerNascimento.open()" class="formFild">
+                            <mat-label>Data Nascimento</mat-label>
                                 <input matInput [matDatepicker]="pickerNascimento" formControlName="nascimento" name="nascimento" class="formFild" readonly>
                                 <mat-hint>DD/MM/YYYY</mat-hint >
                                 <mat-error *ngIf="formBasico.controls['nascimento'].hasError('required')">Data de Nascimento é um campo obrigatorio</mat-error>
                                 <mat-datepicker-toggle matSuffix [for]="pickerNascimento"></mat-datepicker-toggle>
                                 <mat-datepicker #pickerNascimento></mat-datepicker>
-                             </mat-form-field>
+                            </mat-form-field>
                        </div>
                        <br>
                        <div class="grid">
                             <mat-form-field class="formFild">
-                                <input matInput placeholder="Digite o CIM" [(ngModel)]="usuario.cim" formControlName="cim"  name="cim">
+                                <input [readonly]="minhaConta" matInput placeholder="Digite o CIM" [(ngModel)]="usuario.cim" formControlName="cim"  name="cim">
                                 <mat-error *ngIf="formBasico.controls['cim'].hasError('required')">CIM é um campo obrigatorio</mat-error>
                             </mat-form-field>
                             <mat-form-field class="formFild">
-                                <mat-label>Selecione o nível do obreiro</mat-label>
-                                <mat-select [(ngModel)]="usuario.nivel_obreiro" formControlName="nivel_obreiro">
-                                  <mat-option *ngFor="let nivelObreiro of nivelObreiroLista" [value]="nivelObreiro.id">{{nivelObreiro.descricao}}</mat-option>
-                                </mat-select>
+                                <input matInput placeholder="Digite o IME" [(ngModel)]="usuario.ime" formControlName="ime"  name="ime">
+                                <mat-error *ngIf="formBasico.controls['ime'].hasError('required')">IME é um campo obrigatorio</mat-error>
                             </mat-form-field>
                        </div>  
+                       <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o GRAU" [(ngModel)]="usuario.grau" formControlName="grau"  name="grau">
+                                <mat-error *ngIf="formBasico.controls['grau'].hasError('required')">GRAU é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <mat-label>Selecione o nível do obreiro</mat-label>
+                                <mat-select [disabled]="minhaConta" [(ngModel)]="usuario.nivel_obreiro" formControlName="nivel_obreiro">
+                                <mat-option *ngFor="let nivelObreiro of nivelObreiroLista" [value]="nivelObreiro.id">{{nivelObreiro.descricao}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                       </div>
                        <div class="grid">
                             <mat-form-field class="formFild">
                                 <input matInput placeholder="Digite o CPF" [(ngModel)]="usuario.cpf" formControlName="cpf"  name="cpf">
@@ -70,15 +98,54 @@
                                 <mat-error *ngIf="formBasico.controls['rg'].hasError('required')">RG é um campo obrigatorio</mat-error>
                             </mat-form-field>
                         </div> 
-                       <br>
-                        <div *ngIf="tipoFormulario === 'edita'" class="formFild">
-                            <h4>Status: </h4>
-                             <mat-radio-group [(ngModel)]="usuarioAtivo">
-                               <mat-radio-button value=true [checked]="usuario.ativo" (click)="ativo(true)" class="radioButton" color="primary">Ativo</mat-radio-button>
-                               <mat-radio-button value=false [checked]="!usuario.ativo" (click)="ativo(false)"  color="primary">Inativo</mat-radio-button>
-                             </mat-radio-group>
+                        <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o Endereço Residencial" [(ngModel)]="usuario.endereco_residencial" formControlName="endereco_residencial"  name="endereco_residencial">
+                                <mat-error *ngIf="formBasico.controls['endereco_residencial'].hasError('required')">Endereço Residencial é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input [textMask]="{mask: mask}" matInput placeholder="Digite o Telefone Residencial" [(ngModel)]="usuario.telefone_residencial" formControlName="telefone_residencial"  name="telefone_residencial">
+                                <mat-error *ngIf="formBasico.controls['telefone_residencial'].hasError('required')">Telefone Residencial é um campo obrigatorio</mat-error>
+                            </mat-form-field>
                         </div>
-                       
+                        <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o Endereço Comercial" [(ngModel)]="usuario.endereco_comercial" formControlName="endereco_comercial"  name="endereco_comercial">
+                                <mat-error *ngIf="formBasico.controls['endereco_comercial'].hasError('required')">Endereço Comercial é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input [textMask]="{mask: mask}" matInput placeholder="Digite o Telefone Comercial" [(ngModel)]="usuario.telefone_comercial" formControlName="telefone_comercial"  name="telefone_comercial">
+                                <mat-error *ngIf="formBasico.controls['telefone_comercial'].hasError('required')">Telefone Comercial é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o Nome do Pai" [(ngModel)]="usuario.nome_pai" formControlName="nome_pai"  name="nome_pai">
+                                <mat-error *ngIf="formBasico.controls['nome_pai'].hasError('required')">Nome do Pai é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o Nome da Mãe" [(ngModel)]="usuario.nome_mae" formControlName="nome_mae"  name="nome_mae">
+                                <mat-error *ngIf="formBasico.controls['nome_mae'].hasError('required')">Nome da Mãe é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite o Nome da Esposa (Caso tenha)" [(ngModel)]="usuario.nome_esposa" formControlName="nome_esposa"  name="nome_esposa">
+                            </mat-form-field>
+                        </div>
+                        
+                        <ng-container formArrayName="filhos">
+                            <div class="grid" *ngFor="let filho of filhos.controls; let i = index">
+                                <mat-form-field>
+                                    <input matInput placeholder="Nome do filho {{ i + 1 }}" [formControlName]="i">
+                                    <button mat-icon-button color="warn" (click)="removerFilho(i)">
+                                        <mat-icon>close</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
+                            <button class="add-filho" mat-raised-button color="primary" (click)="adicionarFilho()">Adicionar Filho</button>
+                        </ng-container>
+                         
                        <div class="actions">
                         <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
                             {{descricaoBotao}}

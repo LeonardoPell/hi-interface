@@ -5,4 +5,20 @@ export interface Evento{
     data?: string;
     hora?: string;
     data_hora_reuniao?: string;
+    reuniao_aconteceu?: boolean
+}
+
+export interface DadosRelatorioEvento {
+    qtdReunioesTotal: number,
+    dadosUsuarios: DadosUsuarioRelatorioEvento[],
+    qtdReunioesConfirmadas: number;
+    qtdReunioesNaoConfirmadas: number;
+}
+
+export interface DadosUsuarioRelatorioEvento{
+    id: number,
+    nome: string,
+    cor: string,
+    porcentagem: number,
+    quantidadeReunioes: number,
 }

@@ -6,6 +6,78 @@
       text-align: center;
   }
 
+  .links{
+    width: 30%;
+  }
+
+  .containerLinks{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .btnLinkHome:hover{
+    background-color: rgb(223, 223, 223);
+  }
+
+  .containerLogin{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .containerLogin form{
+    text-align: center;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 30px 60px;
+    background-color: white;
+    width: 30%;
+  }
+
+  .containerLogin form h2{
+    margin-bottom: 15px;
+  }
+
+  .acao{
+    margin-top: 20px;
+  }
+
+  .acao, .acao button{
+    width: 100%;
+  }
+
+  .btnLinkHome{
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    font-size: 22px;
+    width: 45%;
+    padding: 10px;
+    margin: 20px 0;
+    -webkit-box-shadow: 2px 4px 19px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 4px 19px -8px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 19px -8px rgba(0,0,0,0.75);
+  }
+
+  .imagemCentro{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    min-width: 700px;
+  }
+
+  .linksDireita{
+    width: 30%;
+  }
+
   .flutuando {
       position: relative;
       animation-name: flutuar;
@@ -97,19 +169,39 @@
     width: 90%;
   }
   
-  @keyframes flutuar {
-    0% {
-      transform: translateY(0);
+  @media (max-width: 1600px){
+
+    .btnLinkHome{
+      width: 80%;
     }
-    50% {
-      transform: translateY(-10px);
-    }
-    100% {
-      transform: translateY(0);
+    
+    
+  }
+
+  @media (max-width: 1400px){
+    .containerLogin form{
+      width: 60%;
     }
   }
 
-  @media (max-width: 950px) {
+  @media (max-width: 1200px) {
+      .containerLogin form{
+        padding: 30px;
+        width: 80%;
+      }
+
+      .imagemCentro{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-width: 0;
+        width: 100%;
+      }
+
+      .links{
+        width: 100%;
+      }
+
       .containerImagens {
         flex-direction: column;
         align-items: center;

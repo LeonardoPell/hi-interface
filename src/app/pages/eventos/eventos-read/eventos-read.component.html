@@ -24,6 +24,15 @@
         <td mat-cell *matCellDef="let element" (click)="selectEvento(element.id)"> {{element.hora}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="aconteceu">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element" class="coluna-aconteceu"> 
+          <button mat-raised-button (click)="alteraAconteceuReuniao(element)" [color]="retornaCorBotao(element)" class="cadastro">
+            {{retornaTextBotao(element)}}
+          </button>
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="acao">
         <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
         <td mat-cell *matCellDef="let element">

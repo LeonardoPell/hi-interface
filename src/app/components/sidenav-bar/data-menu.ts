@@ -2,6 +2,11 @@ export var dadosMenu = [
   {
     text: 'Home',
     icon: 'home',
+    routerLink: '/menu',
+  },
+  {
+    text: 'Calendário',
+    icon: 'calendar_today',
     routerLink: '/noticias',
   },
   {
@@ -21,9 +26,42 @@ export var dadosMenu = [
       },
     ],
   },
+  /*{
+    text: 'Financeiro',
+    icon: 'attach_money',
+    children: [
+      {
+        text: 'Balancete',
+        routerLink: '/financeiro/balancete',
+        icon: 'money',
+      },
+    ]
+  },*/
   {
-    text: 'Eventos',
+    text: 'Evento',
     icon: 'event',
-    routerLink: '/eventos',
+    children: [
+      {
+        text: 'Eventos',
+        routerLink: '/eventos',
+        icon: 'event_available',
+      },
+      {
+        text: 'Presença',
+        routerLink: '/eventos/relatorio/presenca',
+        icon: 'playlist_add_check',
+      }
+    ]
   },
+  {
+    text: 'Documentos',
+    icon: 'book',
+    children: [
+      {
+        text: 'Orientações Ritualisticas',
+        routerLink: '/orientacoes-ritualisticas',
+        icon: 'bookmark',
+      },
+    ]
+  }
 ];

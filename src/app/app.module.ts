@@ -23,6 +23,9 @@ import { HistoriaHiramComponent } from './pages/historia-hiram/historia-hiram.co
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ModalCalendarComponent } from './components/modal-calendar/modal-calendar.component';
 import { HistoriaMaconariaComponent } from './pages/historia-maconaria/historia-maconaria.component';
+import { MenuComponent } from './pages/menu/menu.component';
+import { CalendarioInicialComponent } from './pages/calendario-inicial/calendario-inicial.component';
+import { ExVeneraveisComponent } from './pages/ex-veneraveis/ex-veneraveis.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { HistoriaMaconariaComponent } from './pages/historia-maconaria/historia-
     HomeLogadoComponent,
     HistoriaHiramComponent,
     ModalCalendarComponent,
-    HistoriaMaconariaComponent
+    HistoriaMaconariaComponent,
+    MenuComponent,
+    CalendarioInicialComponent,
+    ExVeneraveisComponent
   ],
   imports: [
     HttpClientModule,
