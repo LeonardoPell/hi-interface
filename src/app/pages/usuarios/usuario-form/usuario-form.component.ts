@@ -28,6 +28,18 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
     iniciacao: '',
     ativo: true,
     nivel_obreiro: 0,
+    elevacao: '',
+    exaltacao: '',
+    ime: '',
+    grau: '',
+    endereco_comercial: '',
+    telefone_comercial: '',
+    endereco_residencial: '',
+    telefone_residencial: '',
+    nome_pai: '',
+    nome_mae: '',
+    nome_esposa: '',
+    filhos: []
   };
   titulo = '';
   descricaoBotao = '';
@@ -62,7 +74,19 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
     cpf: ['', Validators.required],
     rg: ['', Validators.required],
     nascimento: ['', Validators.required],
-    nivel_obreiro: ['', Validators.required]
+    nivel_obreiro: ['', Validators.required],
+    elevacao: ['', Validators.required],
+    exaltacao: ['', Validators.required],
+    ime: ['', Validators.required],
+    grau: ['', Validators.required],
+    endereco_comercial: [''],
+    telefone_comercial: [''],
+    endereco_residencial: ['', Validators.required],
+    telefone_residencial: ['', Validators.required],
+    nome_pai: ['', Validators.required],
+    nome_mae: ['', Validators.required],
+    nome_esposa: [''],
+    filhos: ['']
   });
   
   constructor(
@@ -108,11 +132,8 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  ativo(ativo: boolean): void {
-    this.usuarioAtivo = ativo;
-  }
-
   envia(){
+    debugger;
     if(!this.formBasico.valid){
       return;
     }
@@ -130,7 +151,7 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
         rg: this.formBasico.value.rg,
         nascimento: this.formBasico.value.nascimento,
         nivel_obreiro: this.formBasico.value.nivel_obreiro,
-        ativo: this.usuarioAtivo,
+        ativo: true,
       }
 
       if(!this.formBasico.value.senha || this.formBasico.value.senha === ''){
