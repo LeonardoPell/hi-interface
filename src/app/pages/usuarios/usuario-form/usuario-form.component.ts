@@ -75,16 +75,16 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
     rg: ['', Validators.required],
     nascimento: ['', Validators.required],
     nivel_obreiro: ['', Validators.required],
-    elevacao: ['', Validators.required],
-    exaltacao: ['', Validators.required],
-    ime: ['', Validators.required],
-    grau: ['', Validators.required],
+    elevacao: [''],
+    exaltacao: [''],
+    ime: [''],
+    grau: [''],
     endereco_comercial: [''],
     telefone_comercial: [''],
-    endereco_residencial: ['', Validators.required],
-    telefone_residencial: ['', Validators.required],
-    nome_pai: ['', Validators.required],
-    nome_mae: ['', Validators.required],
+    endereco_residencial: [''],
+    telefone_residencial: [''],
+    nome_pai: [''],
+    nome_mae: [''],
     nome_esposa: [''],
     filhos: this.fb.array([])
   });
@@ -159,14 +159,14 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
       nascimento: this.formBasico.value.nascimento,
       nivel_obreiro: this.formBasico.value.nivel_obreiro,
       ativo: true,
-      elevacao: this.formBasico.value.elevacao,
-      exaltacao: this.formBasico.value.exaltacao,
+      elevacao: (this.formBasico.value.elevacao) ? this.formBasico.value.elevacao : null,
+      exaltacao: (this.formBasico.value.exaltacao) ? this.formBasico.value.exaltacao : null,
       ime: this.formBasico.value.ime,
       grau: this.formBasico.value.grau,
       endereco_comercial: this.formBasico.value.endereco_comercial,
-      telefone_comercial: this.formBasico.value.telefone_comercial.replace(/[^0-9]/g, ''),
+      telefone_comercial: (this.formBasico.value.telefone_comercial) && this.formBasico.value.telefone_comercial.replace(/[^0-9]/g, ''),
       endereco_residencial: this.formBasico.value.endereco_residencial,
-      telefone_residencial: this.formBasico.value.telefone_residencial.replace(/[^0-9]/g, ''),
+      telefone_residencial: (this.formBasico.value.telefone_residencial) && this.formBasico.value.telefone_residencial.replace(/[^0-9]/g, ''),
       nome_pai: this.formBasico.value.nome_pai,
       nome_mae: this.formBasico.value.nome_mae,
       nome_esposa: this.formBasico.value.nome_esposa,
@@ -186,6 +186,16 @@ export class UsuarioFormComponent implements OnInit, OnDestroy {
           return;
         })
       )
+      return;
+    }
+
+    if(!this.formBasico.value.senha){
+      this._snackBarService.showMessage('Nenhuma senha foi digitada!',true);
+      return;
+    }
+
+    if(!this.formBasico.value.nivel_obreiro){
+      this._snackBarService.showMessage('Selecione o nível do obreiro!',true);
       return;
     }
 
