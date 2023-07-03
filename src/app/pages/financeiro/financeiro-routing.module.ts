@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BalanceteComponent } from './balancete/balancete.component';
+import { EntradasComponent } from './entradas/entradas.component';
 
 const routes: Routes = [
   {
-    path: 'balancete', component: BalanceteComponent
+    path: 'entrada/create/:ano/:mes', component: EntradasComponent
   },
   {
-    path: 'balancete/:mes/:ano', component: BalanceteComponent
+    path: 'entrada/edit/:id', component: EntradasComponent
   }
 ];
 

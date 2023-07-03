@@ -1,0 +1,55 @@
+<div class="containerApp">
+    <div class="tittle">
+        <h1>{{titulo}}</h1>
+    </div>
+    <mat-tab-group animationDuration="500ms">
+        <mat-tab label="Informações basicas">
+            <div class="card-conatiner mat-elevation-z8">
+                <mat-card class="card">
+                   
+                    <form [formGroup]="formBasico" novalidate >
+                       <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite a Descrição da Entrada" [(ngModel)]="entrada.descricao" formControlName="descricao"  name="descricao">
+                                <mat-error *ngIf="formBasico.controls['descricao'].hasError('required')">Descrição é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input type="number" matInput placeholder="Digite o valor R$" [(ngModel)]="entrada.valor" formControlName="valor"  name="valor">
+                                <mat-error *ngIf="formBasico.controls['valor'].hasError('required')">Valor é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                       </div>     
+                       <div class="grid">
+                            <mat-form-field class="formFild">
+                                <mat-label>Selecione o tipo de pagamento</mat-label>
+                                <mat-select [(ngModel)]="entrada.tipo" formControlName="tipo">
+                                    <mat-option [value]="1">Anuidade</mat-option>
+                                    <mat-option [value]="2">Tronco de Beneficência</mat-option>
+                                    <mat-option [value]="3">Outros</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field (click)="pickerDataPagamento.open()" class="formFild">
+                                <mat-label>Data Pagamento</mat-label>
+                                <input matInput [matDatepicker]="pickerDataPagamento" formControlName="data_pagamento" name="data_pagamento" class="formFild" readonly>
+                                <mat-hint>DD/MM/YYYY</mat-hint >
+                                <mat-datepicker-toggle matSuffix [for]="pickerDataPagamento"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerDataPagamento></mat-datepicker>
+                             </mat-form-field>
+                       </div>       
+                       <div class="actions">
+                        <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
+                            {{descricaoBotao}}
+                        </button>
+                        <button mat-raised-button class="cancela" (click)="cancela()">
+                            Voltar
+                        </button>
+                    </div>
+
+                    </form>
+                </mat-card>
+               
+            </div>
+               
+        </mat-tab>
+       
+    </mat-tab-group>
+</div>
