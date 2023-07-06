@@ -1,0 +1,40 @@
+<div class="containerApp">
+    <div class="tittle">
+        <h1>{{titulo}}</h1>
+    </div>
+    <mat-tab-group animationDuration="500ms">
+        <mat-tab label="Informações basicas">
+            <div class="card-conatiner mat-elevation-z8">
+                <mat-card class="card">
+                    <form [formGroup]="formBasico" novalidate >
+                       <div class="grid">
+                            <mat-form-field>
+                                <mat-label>Selecione o ano</mat-label>
+                                <mat-select [(ngModel)]="anoSelecionado" formControlName="ano" name="ano">
+                                <mat-option *ngFor="let ano of anos" [value]="ano">{{ ano }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                       </div>
+                       <div class="grid">
+                            <mat-form-field>
+                                <mat-label>Selecione o mês</mat-label>
+                                <mat-select [(ngModel)]="mesSelecionado" formControlName="mes" name="mes">
+                                <mat-option *ngFor="let mes of mes" [value]="mes.valor">{{ mes.nome }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                       </div>
+                       
+                       <div class="actions">
+                            <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
+                                {{descricaoBotao}}
+                            </button>
+                            <button mat-raised-button class="cancela" (click)="cancela()">
+                                Voltar
+                            </button>
+                        </div>
+                    </form>
+                </mat-card>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

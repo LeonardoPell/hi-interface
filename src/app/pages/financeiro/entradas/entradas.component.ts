@@ -112,7 +112,7 @@ export class EntradasComponent implements OnInit, OnDestroy {
   }
 
   cancela() {
-    this.router.navigate(['financeiro']);
+    this.router.navigate(['financeiro/1']);
     return;
   }
 

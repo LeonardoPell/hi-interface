@@ -6,11 +6,13 @@ import { MaterialModule } from 'src/app/core/material/material.module';
 import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabela.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntradasComponent } from './entradas/entradas.component';
+import { FinanceiroDataComponent } from './financeiro-data/financeiro-data.component';
 
 
 @NgModule({
   declarations: [
-    EntradasComponent
+    EntradasComponent,
+    FinanceiroDataComponent
   ],
   imports: [
     CommonModule,
