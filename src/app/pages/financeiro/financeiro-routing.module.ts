@@ -3,8 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { EntradasComponent } from './entradas/entradas.component';
 import { FinanceiroDataComponent } from './financeiro-data/financeiro-data.component';
 import { SaidasComponent } from './saidas/saidas.component';
+import { FinanceiroOpcoesComponent } from './financeiro-opcoes/financeiro-opcoes.component';
 
 const routes: Routes = [
+  {
+    path: '', component: FinanceiroOpcoesComponent
+  },
   {
     path: ':tipo', component: FinanceiroDataComponent
   },

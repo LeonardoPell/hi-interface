@@ -8,13 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntradasComponent } from './entradas/entradas.component';
 import { FinanceiroDataComponent } from './financeiro-data/financeiro-data.component';
 import { SaidasComponent } from './saidas/saidas.component';
+import { FinanceiroOpcoesComponent } from './financeiro-opcoes/financeiro-opcoes.component';
 
 
 @NgModule({
   declarations: [
     EntradasComponent,
     SaidasComponent,
-    FinanceiroDataComponent
+    FinanceiroDataComponent,
+    FinanceiroOpcoesComponent
   ],
   imports: [
     CommonModule,

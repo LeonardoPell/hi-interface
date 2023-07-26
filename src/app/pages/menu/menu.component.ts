@@ -31,6 +31,12 @@ export class MenuComponent implements OnInit {
       endpoint: 'usuarios'
     },
     {
+      descricao: 'Financeiro',
+      permissaoNecessaria: [],
+      icon: '',
+      endpoint: 'financeiro'
+    },
+    {
       descricao: 'Palavra Semestral',
       permissaoNecessaria: [1],
       icon: '',

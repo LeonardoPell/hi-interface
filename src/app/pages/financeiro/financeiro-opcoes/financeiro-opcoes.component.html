@@ -1,0 +1,5 @@
+<div class="containerBotoes">
+    <button mat-raised-button color="primary" *ngFor="let item of itensMenu" (click)="redirecionaBotao(item.endpoint)">
+        <a>{{item.descricao}}</a>
+    </button>
+</div>
