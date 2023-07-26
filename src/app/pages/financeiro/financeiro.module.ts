@@ -7,11 +7,13 @@ import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabe
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntradasComponent } from './entradas/entradas.component';
 import { FinanceiroDataComponent } from './financeiro-data/financeiro-data.component';
+import { SaidasComponent } from './saidas/saidas.component';
 
 
 @NgModule({
   declarations: [
     EntradasComponent,
+    SaidasComponent,
     FinanceiroDataComponent
   ],
   imports: [
