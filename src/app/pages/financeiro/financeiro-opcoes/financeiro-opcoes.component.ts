@@ -11,16 +11,28 @@ export class FinanceiroOpcoesComponent implements OnInit {
 
   itensMenu: ItemMenu[] = [
     {
-      descricao: 'Entrada',
+      descricao: 'Cadastrar Entrada',
       permissaoNecessaria: [],
       icon: '',
       endpoint: 'financeiro/1'
     },
     {
-      descricao: 'Saida',
+      descricao: 'Cadastrar Saida',
       permissaoNecessaria: [],
       icon: '',
       endpoint: 'financeiro/2'
+    },
+    {
+      descricao: 'Relatorio Mensal de Entrada',
+      permissaoNecessaria: [],
+      icon: '',
+      endpoint: 'financeiro/1/mensal'
+    },
+    {
+      descricao: 'Relatorio Mensal de Saida',
+      permissaoNecessaria: [],
+      icon: '',
+      endpoint: 'financeiro/2/mensal'
     },
   ];
 

@@ -50,5 +50,18 @@ export class FinanceiroEntradaService {
         })
     );
   }
+
+  retornaEntradaPorMes(mes: string, ano: string){
+    return this.http.get(`${this.baseUrl}mes/${mes}/ano/${ano}`).pipe(
+      map((response: any) => {
+          return response.dados;
+      }),
+      catchError((error) => {
+          const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
+          this._snackBarService.showMessage(message,true);
+          return of();
+      })
+    );
+  }
   
 }

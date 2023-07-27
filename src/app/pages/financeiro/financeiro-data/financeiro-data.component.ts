@@ -11,6 +11,7 @@ export class FinanceiroDataComponent implements OnInit {
 
   titulo = 'Selecione uma data';
   descricaoBotao = 'Selecionar';
+  geraRelatorioMensal = false;
   tipo = '';
 
   anoSelecionado: number;
@@ -44,6 +45,7 @@ export class FinanceiroDataComponent implements OnInit {
 
   ngOnInit(): void {
     const tipo = this.route.snapshot.paramMap.get('tipo');
+    const relatorio = this.route.snapshot.paramMap.get('relatorio');
     this.anoSelecionado = new Date().getFullYear();
     this.mesSelecionado = (new Date().getMonth() + 1);
     this.anos = this.getAnosDisponiveis();
@@ -54,6 +56,11 @@ export class FinanceiroDataComponent implements OnInit {
     }else{
       this.titulo += ' de saida';
       this.tipo = 'saida';
+    }
+
+    if(relatorio){
+      this.geraRelatorioMensal = true;
+      this.descricaoBotao = 'Gerar';
     }
   }
 
@@ -76,8 +83,13 @@ export class FinanceiroDataComponent implements OnInit {
     const ano = this.formBasico.value.ano;
     const mes = this.formBasico.value.mes;
 
+    if(this.geraRelatorioMensal){
+      const endpoint = `financeiro/relatorio/mensal/${this.tipo}/${ano}/${mes}`;
+      this.router.navigate([endpoint]);
+      return;
+    }
+
     const endpoint = `financeiro/${this.tipo}/create/${ano}/${mes}`;
-    console.log(endpoint);
     this.router.navigate([endpoint]);
     return;
   }

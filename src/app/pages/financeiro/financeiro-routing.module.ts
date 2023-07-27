@@ -4,6 +4,7 @@ import { EntradasComponent } from './entradas/entradas.component';
 import { FinanceiroDataComponent } from './financeiro-data/financeiro-data.component';
 import { SaidasComponent } from './saidas/saidas.component';
 import { FinanceiroOpcoesComponent } from './financeiro-opcoes/financeiro-opcoes.component';
+import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,12 @@ const routes: Routes = [
   },
   {
     path: ':tipo', component: FinanceiroDataComponent
+  },
+  {
+    path: 'relatorio/mensal/:tipo/:ano/:mes', component: RelatorioMensalComponent
+  },
+  {
+    path: ':tipo/:relatorio', component: FinanceiroDataComponent
   },
   {
     path: 'entrada/create/:ano/:mes', component: EntradasComponent

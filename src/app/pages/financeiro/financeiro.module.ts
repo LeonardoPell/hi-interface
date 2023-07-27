@@ -9,6 +9,7 @@ import { EntradasComponent } from './entradas/entradas.component';
 import { FinanceiroDataComponent } from './financeiro-data/financeiro-data.component';
 import { SaidasComponent } from './saidas/saidas.component';
 import { FinanceiroOpcoesComponent } from './financeiro-opcoes/financeiro-opcoes.component';
+import { RelatorioMensalComponent } from './relatorio-mensal/relatorio-mensal.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FinanceiroOpcoesComponent } from './financeiro-opcoes/financeiro-opcoes
     EntradasComponent,
     SaidasComponent,
     FinanceiroDataComponent,
-    FinanceiroOpcoesComponent
+    FinanceiroOpcoesComponent,
+    RelatorioMensalComponent
   ],
   imports: [
     CommonModule,
