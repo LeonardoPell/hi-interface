@@ -62,6 +62,13 @@ const routes: Routes = [
           import('./pages/orientacoes-ritualisticas/orientacoes-ritualisticas.module').then(
             (m) => m.OrientacoesRitualisticasModule
           ),
+      },
+      {
+        path: 'fotos',
+        loadChildren: () =>
+          import('./pages/fotos/fotos.module').then(
+            (m) => m.FotosModule
+          ),
       }
     ],
     canActivate: [AuthGuard]

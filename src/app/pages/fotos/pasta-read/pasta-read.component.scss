@@ -1,0 +1,42 @@
+table {
+    width: 100%;
+    cursor: pointer;
+  }
+  .container {
+    padding: 24px;
+  }
+  
+  .actions {
+    width: 30%;
+    margin: 8px;
+  }
+  
+  h1 {
+    font-size: 1em;
+  }
+  
+  .filter {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0px 5px 0px 0px;
+  }
+  
+  table tr:hover td {
+    background-color: #e5e2e2;
+  }
+  
+  .refresh {
+    margin-left: 7px;
+  }
+  .menuAcoes {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    text-align: end;
+  }
+  .coluna-aconteceu{
+    width: 10%;
+  }
+  
