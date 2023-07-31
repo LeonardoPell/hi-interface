@@ -8,13 +8,19 @@ import { PastaViewComponent } from './pasta-view/pasta-view.component';
 import { MaterialModule } from 'src/app/core/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabela.module';
+import { FotosReadComponent } from './fotos-read/fotos-read.component';
+import { FotosViewComponent } from './fotos-view/fotos-view.component';
+import { FotosFormComponent } from './fotos-form/fotos-form.component';
 
 
 @NgModule({
   declarations: [
     PastaFormComponent,
     PastaReadComponent,
-    PastaViewComponent
+    PastaViewComponent,
+    FotosReadComponent,
+    FotosViewComponent,
+    FotosFormComponent
   ],
   imports: [
     CommonModule,

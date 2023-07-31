@@ -1,0 +1,43 @@
+<div class="container">
+
+    <app-filtro-tabela [rota]="'/fotos/create/'+pasta" [descricaoBotaoNovo]="'Cadastrar Foto'" [permissaoCadastro]="permissaoCadastro" [descricaoTitulo]="'Fotos'" [recebeLista]="listaFoto" (valorFiltro)="recebeValorFiltro($event)"></app-filtro-tabela>
+  
+    <table mat-table [dataSource]="listaFoto" matSort class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Codigo Pasta</th>
+        <td mat-cell *matCellDef="let element" (click)="selectFoto(element.id)"> #{{element.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="descricao_foto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Descrição da foto</th>
+        <td mat-cell *matCellDef="let element" (click)="selectFoto(element.id)"> {{element.descricao_foto}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell *matCellDef="let element">
+          <div class="menuAcoes">
+            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+            <mat-menu #menu="matMenu">
+              <button (click)="selectFoto(element.id)" mat-menu-item>Editar</button>
+              <button (click)="inativaFoto(element.id)" mat-menu-item>Excluir</button>
+            </mat-menu>
+          </div>
+        </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>    
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">Não existe esta informação deste evento para filtrar "{{filtroNaoEncontrado}}"</td>
+      </tr>
+  
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of document" [pageSize]="10"
+      showFirstLastButtons></mat-paginator>
+  
+  </div>
+  

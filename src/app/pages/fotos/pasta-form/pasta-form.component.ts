@@ -68,7 +68,7 @@ export class PastaFormComponent implements OnInit, OnDestroy {
       this.sub.push(
         this._PastaFotosService.editaPasta(dadosEnvio,Number(id)).subscribe(pasta => {
           this._snackBarService.showMessage('Pasta editada com sucesso!');
-          this.router.navigate(['fotos/pasta']);
+          this.router.navigate(['fotos/pasta/lista']);
           return;;
         })
       );
@@ -79,7 +79,7 @@ export class PastaFormComponent implements OnInit, OnDestroy {
     this.sub.push(
       this._PastaFotosService.cadastraPasta(dadosEnvio).subscribe(pasta => {
         this._snackBarService.showMessage('Pasta criada com sucesso!');
-        this.router.navigate(['fotos/pasta']);
+        this.router.navigate(['fotos/pasta/lista']);
         return;;
       })
     );
@@ -88,7 +88,7 @@ export class PastaFormComponent implements OnInit, OnDestroy {
   }
 
   cancela() {
-    this.router.navigate(['fotos/pasta']);
+    this.router.navigate(['fotos/pasta/lista']);
   }
 
   ngOnDestroy() {

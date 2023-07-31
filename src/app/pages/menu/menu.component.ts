@@ -64,7 +64,7 @@ export class MenuComponent implements OnInit {
       descricao: 'Fotos de Eventos',
       permissaoNecessaria: [1],
       icon: '',
-      endpoint: 'fotos/pasta'
+      endpoint: 'fotos/pasta/lista'
     },
   ];
 

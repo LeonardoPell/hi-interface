@@ -1,0 +1,46 @@
+<div class="containerApp">
+    <div class="tittle">
+        <h1>{{titulo}}</h1>
+    </div>
+    <mat-tab-group animationDuration="500ms">
+        <mat-tab label="Informações basicas">
+            <div class="card-conatiner mat-elevation-z8">
+                <mat-card class="card">
+                   
+                    <form [formGroup]="formBasico" novalidate >
+                       <div class="grid">
+                            <mat-form-field class="formFild">
+                                <input matInput placeholder="Digite a Descrição da Foto" [(ngModel)]="foto.descricao_foto" formControlName="descricao_foto"  name="descricao_foto">
+                                <mat-error *ngIf="formBasico.controls['descricao_foto'].hasError('required')">Descrição da Foto é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="formFild">
+                                <input (blur)="mostraPreviaImagem()" type="url" matInput placeholder="Digite a URL do Arquivo" [(ngModel)]="foto.url_arquivo" formControlName="url_arquivo"  name="url_arquivo">
+                                <mat-error *ngIf="formBasico.controls['url_arquivo'].hasError('required')">URL do Arquivo é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                       </div>           
+                       <div class="gridPrevia" *ngIf="url_previa">
+                            <h2>Previa Foto</h2>
+                            <br>
+                            <img width="600" [src]="url_previa" alt="Previa Imagem">
+                       </div>
+                       <div class="actions">
+                        <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
+                            {{descricaoBotao}}
+                        </button>
+                        <button mat-raised-button class="cancela" (click)="cancela()">
+                            Voltar
+                        </button>
+                        <button mat-raised-button (click)="videoCadastraFoto()" color="warn" class="cadastrarDocumento cadastro">
+                            Como Cadastrar uma foto
+                        </button>
+                    </div>
+
+                    </form>
+                </mat-card>
+               
+            </div>
+               
+        </mat-tab>
+       
+    </mat-tab-group>
+</div>

@@ -4,7 +4,7 @@ export interface Foto {
     id?: number;
     descricao_foto: string;
     url_arquivo: string;
-    pasta: number;
+    pasta?: number;
     ativo?: boolean;
     pastaModel?: PastaFotos;
 }

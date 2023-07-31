@@ -51,7 +51,7 @@ export class FotosService {
     );
   }
 
-  editaFoto(foto: Foto, id: number): Observable<EditaFoto> {
+  editaFoto(foto: EditaFoto, id: number): Observable<EditaFoto> {
     return this.http.patch<Foto>(`${this.baseUrl}${id}`,foto).pipe(
         map((response: any) => {
             return response.dados;
