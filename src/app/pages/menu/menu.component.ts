@@ -60,6 +60,12 @@ export class MenuComponent implements OnInit {
       icon: '',
       endpoint: 'orientacoes-ritualisticas'
     },
+    {
+      descricao: 'Fotos de Eventos',
+      permissaoNecessaria: [1],
+      icon: '',
+      endpoint: 'fotos/pasta'
+    },
   ];
 
   constructor(
