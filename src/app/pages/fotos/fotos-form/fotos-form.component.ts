@@ -123,7 +123,7 @@ export class FotosFormComponent implements OnInit, OnDestroy {
   }
 
   videoCadastraFoto(){
-    window.open('', '_blank');
+    window.open('https://drive.google.com/file/d/1_5hKrwMIAaTxAZVhAI_C38PJOEs5w_AN/view?usp=drive_link', '_blank');
     return;
   }
 
