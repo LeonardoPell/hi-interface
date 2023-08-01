@@ -26,6 +26,8 @@ import { HistoriaMaconariaComponent } from './pages/historia-maconaria/historia-
 import { MenuComponent } from './pages/menu/menu.component';
 import { CalendarioInicialComponent } from './pages/calendario-inicial/calendario-inicial.component';
 import { ExVeneraveisComponent } from './pages/ex-veneraveis/ex-veneraveis.component';
+import { PastasEventosInicioComponent } from './pages/pastas-eventos-inicio/pastas-eventos-inicio.component';
+import { FotosEventosInicioComponent } from './pages/fotos-eventos-inicio/fotos-eventos-inicio.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { ExVeneraveisComponent } from './pages/ex-veneraveis/ex-veneraveis.compo
     HistoriaMaconariaComponent,
     MenuComponent,
     CalendarioInicialComponent,
-    ExVeneraveisComponent
+    ExVeneraveisComponent,
+    PastasEventosInicioComponent,
+    FotosEventosInicioComponent
   ],
   imports: [
     HttpClientModule,

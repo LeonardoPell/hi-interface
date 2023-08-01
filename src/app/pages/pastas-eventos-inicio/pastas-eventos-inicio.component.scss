@@ -1,0 +1,19 @@
+main{
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5%;
+    
+    .pasta{
+        img{
+            cursor: pointer;
+        }
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        span {
+            margin-top: 20px;
+        }
+    }
+}

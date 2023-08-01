@@ -11,6 +11,8 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 import { CalendarioInicialComponent } from './pages/calendario-inicial/calendario-inicial.component';
 import { ExVeneraveisComponent } from './pages/ex-veneraveis/ex-veneraveis.component';
+import { PastasEventosInicioComponent } from './pages/pastas-eventos-inicio/pastas-eventos-inicio.component';
+import { FotosEventosInicioComponent } from './pages/fotos-eventos-inicio/fotos-eventos-inicio.component';
 
 const routes: Routes = [
   {
@@ -99,6 +101,12 @@ const routes: Routes = [
       },
       {
         path: 'ex-veneraveis', component: ExVeneraveisComponent
+      },
+      {
+        path: 'fotos-eventos/:pasta', component: FotosEventosInicioComponent
+      },
+      {
+        path: 'fotos-eventos', component: PastasEventosInicioComponent
       }
     ]
   },

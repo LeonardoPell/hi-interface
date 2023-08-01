@@ -1,0 +1,9 @@
+<app-header-inicial></app-header-inicial>
+<main>
+    <div class="containerFotos">
+        <div class="fotos" *ngFor="let foto of todasFotos">
+            <img [src]="'https://drive.google.com/uc?export=view&id='+ foto.url_arquivo" alt="foto evento">
+        </div>
+    </div>
+</main>
+<app-footer-inicial></app-footer-inicial>

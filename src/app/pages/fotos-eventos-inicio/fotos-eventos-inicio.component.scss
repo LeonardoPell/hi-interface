@@ -1,0 +1,19 @@
+main{
+    height: 80%;
+    overflow-y: auto;
+    .containerFotos{
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 5%; 
+    }
+    .fotos{
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img{
+            max-width: 500px;
+        }
+    }
+}

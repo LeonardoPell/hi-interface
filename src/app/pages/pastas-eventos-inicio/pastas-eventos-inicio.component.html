@@ -1,0 +1,8 @@
+<app-header-inicial></app-header-inicial>
+<main>
+    <div *ngFor="let pasta of todasPastas" class="pasta">
+        <img (click)="selecionaPasta(pasta.id)" width="150" src="../../../assets/images/pasta-icon.png" alt="logoPasta">
+        <span>{{pasta.nome_pasta}}</span>
+    </div>
+</main>
+<app-footer-inicial></app-footer-inicial>
