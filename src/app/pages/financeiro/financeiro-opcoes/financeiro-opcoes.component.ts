@@ -34,6 +34,24 @@ export class FinanceiroOpcoesComponent implements OnInit {
       icon: '',
       endpoint: 'financeiro/2/mensal'
     },
+    {
+      descricao: 'Relatorio Anual de Entrada',
+      permissaoNecessaria: [],
+      icon: '',
+      endpoint: 'financeiro/selecao/anual/1'
+    },
+    {
+      descricao: 'Relatorio Anual de Saida',
+      permissaoNecessaria: [],
+      icon: '',
+      endpoint: 'financeiro/selecao/anual/2'
+    },
+    {
+      descricao: 'Relatorio Relação Entrada Saida',
+      permissaoNecessaria: [],
+      icon: '',
+      endpoint: 'financeiro/selecao/anual/3'
+    },
   ];
 
   constructor(

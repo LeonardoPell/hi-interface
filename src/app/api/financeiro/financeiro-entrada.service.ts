@@ -63,5 +63,31 @@ export class FinanceiroEntradaService {
       })
     );
   }
+
+  retornaEntradaPorAno(ano: string){
+    return this.http.get(`${this.baseUrl}ano/${ano}`).pipe(
+      map((response: any) => {
+          return response.dados;
+      }),
+      catchError((error) => {
+          const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
+          this._snackBarService.showMessage(message,true);
+          return of();
+      })
+    );
+  }
+
+  relacaoEntradaSaida(ano: string){
+    return this.http.get(`${this.baseUrl}relacao/ano/${ano}`).pipe(
+      map((response: any) => {
+          return response.dados;
+      }),
+      catchError((error) => {
+          const message = (error?.error?.mensagem) ? error.error.mensagem : error.message;
+          this._snackBarService.showMessage(message,true);
+          return of();
+      })
+    );
+  }
   
 }
