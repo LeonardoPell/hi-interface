@@ -1,0 +1,44 @@
+<div class="containerApp">
+    <div class="tittle">
+        <h1>{{titulo}}</h1>
+    </div>
+    <mat-tab-group animationDuration="500ms">
+        <mat-tab label="Informações basicas">
+            <div class="card-conatiner mat-elevation-z8">
+                <mat-card class="card">
+                   
+                    <form [formGroup]="formBasico" novalidate >
+                       <div class="grid">
+                            <mat-form-field class="formFild formFild100">
+                                <input matInput placeholder="Digite o titulo" [(ngModel)]="ataReuniao.titulo" formControlName="titulo"  name="titulo">
+                                <mat-error *ngIf="formBasico.controls['titulo'].hasError('required')">Titulo é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                       </div>
+
+                       <div class="grid">
+                            <mat-form-field class="formFild formFild100">
+                                <textarea [(ngModel)]="ataReuniao.descricao" rows="5" matInput placeholder="Digite a descrição da ata" formControlName="descricao" name="descricao"></textarea>
+                                <mat-error *ngIf="formBasico.controls['descricao'].hasError('required')">Descrição é um campo obrigatorio</mat-error>
+                            </mat-form-field>
+                        </div>                      
+                       <div class="actions">
+                        <button mat-raised-button (click)="envia()" color="primary" class="cadastro">
+                            {{descricaoBotao}}
+                        </button>
+                        <button mat-raised-button class="cancela" (click)="cancela()">
+                            Voltar
+                        </button>
+                        <button *ngIf="ataReuniao.reuniao !== 0" mat-raised-button class="cancela" (click)="gerarPdf()">
+                            Gerar PDF
+                        </button>
+                    </div>
+
+                    </form>
+                </mat-card>
+               
+            </div>
+               
+        </mat-tab>
+       
+    </mat-tab-group>
+</div>

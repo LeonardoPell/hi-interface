@@ -112,6 +112,14 @@ export class EventosReadComponent implements OnInit, OnDestroy {
     return;
   }
 
+  cadastrarAtaReuniao(id: number){
+    if(this._permissaoService.validaPermissaoRotina([1,5,7])){
+      this.router.navigate(['/eventos/ata/' + id]);
+      return;
+    }
+    return;
+  }
+
   atualizaValoresMatTable(lista: Evento[]) {
     this.listaEventos = new MatTableDataSource(lista);
     this.listaEventos.sort = this.sort;

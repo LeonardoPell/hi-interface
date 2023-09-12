@@ -1,0 +1,46 @@
+#content{
+    .containerPdf {
+        width: 1000px;
+        border: 1px solid black;
+        margin-top: 20px;
+        margin-left: 80px;
+    }
+
+    .cabecario{
+        margin-left: 80px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        img{
+            margin-right: 20px;
+        }
+    }
+
+    .titulo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 22px;
+    }
+
+    .descricao{
+        padding: 5px 20px;
+    }
+
+    .adicionais{
+        margin-left: 80px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+}
+
+.actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    button{
+        width: 80%;
+        margin-top: 20px;
+    }
+}

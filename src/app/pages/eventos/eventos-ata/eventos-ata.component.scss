@@ -1,0 +1,104 @@
+form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tittle{
+    font-family: Titillium Web;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 24px 0px 0px 24px;
+  }
+  
+  .card-conatiner {
+    padding: 24px;
+  }
+  
+  .card {
+    padding: 30px;
+  }
+  
+  .grid {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .formFild {
+    width: 50%;
+    padding-right: 10px;
+  }
+
+  .formFild100{
+    width: 100%;
+  }
+  
+  .actions {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  
+  .cadastro {
+    margin: 15px 0px 0px 0px;
+    margin-left: 10px;
+  }
+  
+  .cancela {
+    margin: 15px 0px 0px 0px;
+    margin-left: 10px;
+  }
+  .regime {
+    font-size: 10.5px;
+  }
+  .grid-conhecimento {
+    display: flex;
+    flex-direction: column;
+  }
+  .card-conhecimento {
+    width: 57%;
+    padding: 24px 0px 24px 0px;
+    margin: 0 auto;
+  }
+  .titulo-conhecimento {
+    text-align: center;
+  }
+  
+  .containerToggle {
+    width: 50%;
+  }
+  
+  .slideToggle {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+  }
+  
+  .radioButton {
+    padding-right: 10px;
+  }
+
+  mat-form-field{
+    padding: 2px 0;
+  }
+  
+  @media (max-width: 900px) {
+    .grid{
+      flex-direction: column;
+    }
+
+    mat-form-field{
+      width: 100% !important;
+    }
+
+    .card-conhecimento {
+      width: 85%;
+      padding: 24px;
+    }
+  
+    .slideToggle {
+      width: 95%;
+    }
+  }
+  .formataTextoConhecimento {
+    white-space: pre-line;
+  }
+  

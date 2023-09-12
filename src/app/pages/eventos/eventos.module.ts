@@ -10,6 +10,8 @@ import { FiltroTabelaModule } from 'src/app/components/filtro-tabela/filtro-tabe
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventosPresencaComponent } from './eventos-presenca/eventos-presenca.component';
 import { EventosRelatorioPresencaComponent } from './eventos-relatorio-presenca/eventos-relatorio-presenca.component';
+import { EventosAtaComponent } from './eventos-ata/eventos-ata.component';
+import { PdfAtaComponent } from './pdf-ata/pdf-ata.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { EventosRelatorioPresencaComponent } from './eventos-relatorio-presenca/
     EventosReadComponent,
     EventosFormComponent,
     EventosPresencaComponent,
-    EventosRelatorioPresencaComponent
+    EventosRelatorioPresencaComponent,
+    EventosAtaComponent,
+    PdfAtaComponent
   ],
   imports: [
     CommonModule,

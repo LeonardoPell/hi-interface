@@ -1,0 +1,26 @@
+<div class="actions">
+    <button mat-raised-button (click)="geraPdf()" color="primary" class="cadastro">
+        Baixar Pdf
+    </button>
+    <button mat-raised-button (click)="cancelar()" class="cadastro">
+      Voltar
+  </button>
+  </div>
+  
+  <div id="content" #content>
+    <div class="cabecario">
+        <img width="80" src="../../../../assets/images/logo-loja.png" alt="logo-loja">
+        <h2>Ata de Reunião</h2>
+      </div>
+      <div class="containerPdf">
+        <br>
+        <div class="titulo">
+            {{ataReuniao.titulo}} 
+        </div>
+        <br><hr><br>
+        <div class="descricao">
+            {{ataReuniao.descricao}}
+        </div>
+      </div>
+  </div>
+  
